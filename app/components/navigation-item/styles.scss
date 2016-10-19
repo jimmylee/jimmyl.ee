@@ -1,0 +1,45 @@
+.navigationItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 24px;
+  width: 100%;
+
+  &-left {
+    @include text-subtitle();
+    display: block;
+    padding: 0 8px 0 0;
+    flex-shrink: 0;
+  }
+
+  &-right {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding-right: 0 8px 0 0;
+    transition: 200ms $defaultCurve all;
+    transition-property: visibility, opacity, transform;
+    transform: translate3d(-8px, -8px, 0);
+    visibility: hidden;
+    opacity: 0;
+
+    &--visible {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &-title {
+    @include text-subtitle();
+    margin-bottom: 3px;
+  }
+
+  &-description {
+    @include text-subtitle-description();
+  }
+}

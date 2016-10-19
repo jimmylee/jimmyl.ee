@@ -1,0 +1,123 @@
+.diagram-two-threads {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 24px 0 24px;
+  margin: 48px auto 48px auto;
+
+  &-topLabel {
+    @include typescale-smallest();
+    @include typography-ui();
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &-bottomLabel {
+    @include typescale-smallest();
+    @include typography-ui();
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  &-nodeList {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 24px;
+  }
+
+  &-tree {
+    position: relative;
+    width: 100%;
+
+    &-leftCircle {
+      @include transition-card-lift();
+      line-height: 1.2;
+      z-index: 1;
+      background-color: #FFFFFF;
+      position: absolute;
+      box-sizing: border-box;
+      left: 0;
+      height: 72px;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ECECEC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--emphasis {
+        border: 3px solid red;
+        color: red;
+      }
+    }
+
+    &-rightCircle {
+      @include transition-card-lift();
+      line-height: 1.2;
+      z-index: 1;
+      position: absolute;
+      background-color: #FFFFFF;
+      box-sizing: border-box;
+      right: 0;
+      height: 72px;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ECECEC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--emphasis {
+        border: 3px solid red;
+        color: red;
+      }
+    }
+  }
+
+  &-middleLine {
+    position: absolute;
+    height: 1px;
+    background-color: #ECECEC;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      top: -4px;
+      left: -4px;
+      border-radius: 100%;
+      box-shadow: inset 0px 0px 0px 2px #ECECEC;
+      background-color: #FFFFFF;
+    }
+
+    &--emphasis {
+      background-color: red;
+
+      &:before {
+        box-shadow: inset 0px 0px 0px 2px red;
+      }
+    }
+  }
+
+  &-leftLine {
+    @include layout-absolute-centering();
+    right: auto;
+    height: 100%;
+    width: 1px;
+    background-color: #ECECEC;
+  }
+
+  &-rightLine {
+    @include layout-absolute-centering();
+    left: auto;
+    height: 100%;
+    width: 1px;
+    background-color: #ECECEC;
+  }
+}

@@ -1,0 +1,30 @@
+@keyframes pageSlideDownIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-256px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@mixin animate-page-enter($duration: 300ms) {
+  animation: pageSlideDownIn $duration $defaultCurve;
+  opacity: 1;
+}
+
+@keyframes pageSlideDownOut {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(256px);
+    opacity: 0;
+  }
+}
+
+@mixin animate-page-leave($duration: 300ms) {
+  animation: pageSlideDownOut $duration $defaultCurve;
+  opacity: 0;
+}

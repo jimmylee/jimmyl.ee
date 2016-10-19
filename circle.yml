@@ -1,0 +1,28 @@
+general:
+  build_dir: /
+  branches:
+    only:
+      - master
+
+machine:
+  node:
+    version: 6.0.0
+
+dependencies:
+  pre:
+    - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo apt-get update
+    - sudo apt-get install -y gcc-4.9 g++-4.9
+  post:
+    - pip install awscli
+    - npm install gulp -g
+    - npm install
+
+test:
+  override:
+    - npm run build
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - npm run build

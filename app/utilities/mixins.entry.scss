@@ -1,0 +1,109 @@
+@mixin layout-absolute-centering() {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin transition-card-lift() {
+  transform: translateY(0px);
+  transition: 200ms $defaultCurve all;
+  transition-property: transform, box-shadow;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 18px 0px #999;
+  }
+}
+
+@mixin transition-link() {
+  transition: 200ms $defaultCurve color;
+  color: lighten($colors-black, 15%);
+
+  &:hover {
+    color: $colors-black;
+  }
+
+  &:active {
+    color: darken($colors-black, 15%);
+  }
+}
+
+@mixin typography-regular() {
+  font-family: 'Lora', serif;
+}
+
+@mixin typography-ui {
+  font-family: helvetica, sans-serif;
+}
+
+@mixin typography-bold() {
+  font-weight: 700;
+}
+
+@mixin typography-normal() {
+  font-weight: 400;
+}
+
+@mixin typescale-greatest() {
+  font-size: 1.602em;
+}
+
+@mixin typescale-huge() {
+  font-size: 1.424em;
+}
+
+@mixin typescale-large() {
+  font-size: 1.266em;
+}
+
+@mixin typescale-medium() {
+  font-size: 1.125em;
+}
+
+@mixin typescale-normal() {
+  font-size: 16px;
+
+  @media #{$mobileBreakpoint} {
+    font-size: 12px;
+  }
+}
+
+@mixin typescale-small() {
+  font-size: 0.889em;
+}
+
+@mixin typescale-tiny() {
+  font-size: 0.79em;
+}
+
+@mixin typescale-smallest() {
+  font-size: 0.702em;
+}
+
+@mixin text-subtitle() {
+  @include typography-ui();
+  @include typescale-smallest();
+  line-height: 1.3;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.108em;
+}
+
+@mixin text-subtitle-serif() {
+  @include typography-regular();
+  @include typescale-normal();
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.016em;
+  font-style: normal;
+}
+
+@mixin text-subtitle-description() {
+  @include typography-regular();
+  @include typescale-smallest();
+  line-height: 1.3;
+}

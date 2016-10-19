@@ -1,0 +1,67 @@
+.diagram-pipeline {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 24px 0 24px;
+  width: 75%;
+  margin: 48px auto 48px auto;
+
+  &-topLabel {
+    @include typescale-smallest();
+    @include typography-ui();
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &-bottomLabel {
+    @include typescale-smallest();
+    @include typography-ui();
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  &-nodeList {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 24px;
+  }
+
+  &-tree {
+    position: relative;
+    width: 100%;
+
+    &-node {
+      @include transition-card-lift();
+      box-sizing: border-box;
+      padding: 16px;
+      box-shadow: 0 0px 0px 0px #797979;
+      border: 1px solid #ECECEC;
+      background-color: #FFFFFF;
+      margin-bottom: 24px;
+      text-align: center;
+
+      &-title {
+        line-height: 1.6;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0px;
+      }
+
+      &-copy {
+        line-height: 1.6;
+      }
+    }
+  }
+
+  &-line {
+    @include layout-absolute-centering();
+    height: 100%;
+    width: 1px;
+    background-color: #ECECEC;
+  }
+}

@@ -1,0 +1,32 @@
+.diagram-column-list {
+  margin-top: 32px;
+
+  &-title {
+    @include text-subtitle();
+    display: block;
+    margin: 0 0 8px 0;
+  }
+
+  &-text {
+    flex-shrink: 0;
+    padding-right: 8px;
+    width: 100%;
+    overflow-wrap: break-word;
+
+    &:last-child {
+      box-sizing: border-box;
+      flex-shrink: 1;
+      min-width: 25%;
+      max-width: none;
+    }
+  }
+
+  &-item {
+    @include text-subtitle-description();
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+}

@@ -1,0 +1,110 @@
+@import 'utilities/constants.entry.scss';
+@import 'utilities/animations.entry.scss';
+@import 'utilities/mixins.entry.scss';
+
+html,
+body,
+ul,
+ol,
+figure,
+section,
+article,
+nav {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  @include typography-regular();
+  @include typescale-normal();
+  overflow-y: scroll;
+}
+
+body {
+  color: $colors-black;
+}
+
+button,
+input,
+select {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+}
+
+h1, h2, h3, h4, p, dfn, small {
+  @include typography-normal();
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  @include transition-link();
+  text-decoration: underline;
+}
+
+p {
+  @include typescale-normal();
+  line-height: 1.6em;
+  margin-top: 16px;
+}
+
+h1 {
+  @include typescale-large();
+  line-height: 1.3em;
+  font-weight: 700;
+}
+
+h2 {
+  @include typescale-medium();
+  line-height: 1.3em;
+  margin-top: 40px;
+  font-weight: 700;
+}
+
+h3 {
+  @include typescale-medium();
+}
+
+h4 {
+  @include typescale-medium();
+}
+
+.diagram-object-list {
+  margin: 32px 0 0 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  &-square {
+    width: 170px;
+    margin: 0 32px 24px 0;
+  }
+
+  &-header {
+    @include text-subtitle();
+    box-shadow: 0 1px 0 0 $colors-border;
+    padding: 0 0 8px 0;
+    margin: 0 0 16px 0;
+  }
+
+  &-stat {
+    font-size: 3.2em;
+  }
+
+  &-label {
+    @include text-subtitle();
+    color: $colors-gray;
+    display: block;
+    margin: 16px 0 0 0;
+  }
+}
