@@ -75,36 +75,3 @@ h3 {
 h4 {
   @include typescale-medium();
 }
-
-.diagram-object-list {
-  margin: 32px 0 0 0;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: row;
-
-  &-square {
-    width: 170px;
-    margin: 0 32px 24px 0;
-  }
-
-  &-header {
-    @include text-subtitle();
-    box-shadow: 0 1px 0 0 $colors-border;
-    padding: 0 0 8px 0;
-    margin: 0 0 16px 0;
-  }
-
-  &-stat {
-    font-size: 3.2em;
-  }
-
-  &-label {
-    @include text-subtitle();
-    color: $colors-gray;
-    display: block;
-    margin: 16px 0 0 0;
-  }
-}

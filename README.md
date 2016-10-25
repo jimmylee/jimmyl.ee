@@ -2,7 +2,6 @@
 
 # WIP
 
-- add browser compat.
 - add active nav styles
 - pick active nav color (ice)
 - add meta tags.

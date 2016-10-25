@@ -1,3 +1,158 @@
+export const supportTableOne = [
+  {
+    name: 'Edge',
+    data: 'v12+'
+  },
+  {
+    name: 'Chrome',
+    data: 'v4+'
+  },
+  {
+    name: 'FireFox',
+    data: 'v3.5+'
+  },
+  {
+    name: 'Safari',
+    data: 'v9+'
+  },
+  {
+    name: 'iOS Safari',
+    data: 'v9.2+'
+  },
+  {
+    name: 'Opera',
+    data: 'v22+'
+  },
+  {
+    name: 'Android',
+    data: 'v53+'
+  }
+];
+
+export const supportTableTwo = [
+  {
+    name: 'Edge',
+    data: 'v12+'
+  },
+  {
+    name: 'Chrome',
+    data: 'v4+'
+  },
+  {
+    name: 'FireFox',
+    data: 'v3.5+'
+  },
+  {
+    name: 'Safari',
+    data: 'v9+'
+  },
+  {
+    name: 'iOS Safari',
+    data: 'v9.2+'
+  },
+  {
+    name: 'Opera',
+    data: 'v22+'
+  },
+  {
+    name: 'Android',
+    data: 'v53+'
+  }
+];
+
+export const supportTableThree = [
+  {
+    name: 'Edge',
+    data: 'None'
+  },
+  {
+    name: 'Chrome',
+    data: 'v36+'
+  },
+  {
+    name: 'FireFox',
+    data: 'v36+'
+  },
+  {
+    name: 'Safari',
+    data: 'v9.1+'
+  },
+  {
+    name: 'iOS Safari',
+    data: 'v9.3+'
+  },
+  {
+    name: 'Opera',
+    data: 'v24+'
+  },
+  {
+    name: 'Android',
+    data: 'v53+'
+  }
+];
+
+export const supportTableFour = [
+  {
+    name: 'Edge',
+    data: 'v12+'
+  },
+  {
+    name: 'Chrome',
+    data: 'v36+'
+  },
+  {
+    name: 'FireFox',
+    data: 'v36+'
+  },
+  {
+    name: 'Safari',
+    data: 'v9.1+'
+  },
+  {
+    name: 'iOS Safari',
+    data: 'v9.3+'
+  },
+  {
+    name: 'Opera',
+    data: 'v24+'
+  },
+  {
+    name: 'Android',
+    data: 'v53+'
+  }
+];
+
+export const supportTableFive = [
+  {
+    name: 'Edge',
+    data: 'v12+'
+  },
+  {
+    name: 'Chrome',
+    data: 'v43+'
+  },
+  {
+    name: 'FireFox',
+    data: 'v16+'
+  },
+  {
+    name: 'Safari',
+    data: 'v9+'
+  },
+  {
+    name: 'iOS Safari',
+    data: 'v9.2+'
+  },
+  {
+    name: 'Opera',
+    data: 'v30+'
+  },
+  {
+    name: 'Android',
+    data: 'v53+'
+  }
+];
+
 export const diagramOne = {
   topLabel: 'User triggers an animation',
   bottomLabel: 'Bitmaps for layers created',

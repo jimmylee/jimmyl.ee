@@ -2,6 +2,7 @@ import React from 'react';
 import Content from '../../components/content';
 import Header from '../../components/header';
 import List from '../../components/diagram-column-list';
+import StatsTable from '../../components/diagram-stats-table';
 import { connect } from 'react-redux';
 import { diagramThree } from './diagrams';
 
@@ -18,38 +19,20 @@ const pageStats = React.createClass({
 
   render() {
     const { loadTime } = this.props;
-
-    const dataPoints = (
-      <ul className="diagram-object-list">
-        <li className="diagram-object-list-square">
-          <header className="diagram-object-list-header">
-            01&nbsp;&nbsp;Load Time
-          </header>
-          <h3 className="diagram-object-list-stat">
-            {loadTime}
-          </h3>
-          <span className="diagram-object-list-label">seconds</span>
-        </li>
-          <li className="diagram-object-list-square">
-          <header className="diagram-object-list-header">
-            02&nbsp;&nbsp;JS Bundle Size
-          </header>
-          <h3 className="diagram-object-list-stat">
-            350
-          </h3>
-          <span className="diagram-object-list-label">kilobytes</span>
-        </li>
-          <li className="diagram-object-list-square">
-          <header className="diagram-object-list-header">
-            03&nbsp;&nbsp;CSS Size
-          </header>
-          <h3 className="diagram-object-list-stat">
-            15
-          </h3>
-          <span className="diagram-object-list-label">kilobytes</span>
-        </li>
-      </ul>
-    );
+    const pageStats = [
+      {
+        name: 'Load Time',
+        data: `${loadTime}s`
+      },
+      {
+        name: 'JavaScript',
+        data: '350kbs'
+      },
+      {
+        name: 'CSS',
+        data: '15kbs'
+      }
+    ];
 
     return (
       <Content>
@@ -69,7 +52,7 @@ const pageStats = React.createClass({
         All the assets are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket.
         </p>
 
-        {dataPoints}
+        <StatsTable data={pageStats} />
 
         <List data={diagramThree} />
       </Content>

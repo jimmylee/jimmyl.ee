@@ -40,6 +40,6 @@
   }
 
   &-description {
-    @include text-subtitle-description();
+    @include text-subtitle-ui();
   }
 }

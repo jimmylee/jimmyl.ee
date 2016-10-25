@@ -5,8 +5,20 @@ import Content from '../../components/content';
 import Header from '../../components/header';
 import PipelineDiagram from '../../components/diagram-pipeline';
 import TwoThreadDiagram from '../../components/diagram-two-threads';
+import StatsTable from '../../components/diagram-stats-table';
 import List from '../../components/diagram-column-list';
-import { diagramOne, diagramTwo, diagramThree, diagramFour, diagramFive } from './diagrams';
+import {
+  diagramOne,
+  diagramTwo,
+  diagramThree,
+  diagramFour,
+  diagramFive,
+  supportTableOne,
+  supportTableTwo,
+  supportTableThree,
+  supportTableFour,
+  supportTableFive
+} from './diagrams';
 
 const pageCSSAnimations = React.createClass({
   render() {
@@ -151,6 +163,8 @@ const pageCSSAnimations = React.createClass({
           Tactic: avoiding unnecessary paint and layout operations
         </h2>
 
+        <StatsTable data={supportTableOne}/>
+
         <p>
           We know paint and layout are expensive and updating CSS transform properties will not cause those operations.
         </p>
@@ -232,6 +246,8 @@ visibility`}
 
         <h2>Tactic: preparing elements for animations in advance</h2>
 
+        <StatsTable data={supportTableTwo} />
+
         <p>
           If there is no need to be frugal with memory, adding the CSS transform property to your CSSOM will initialize qualifying render layer with a backing surface (compositing layer), making those elements easier to animate.
         </p>
@@ -253,6 +269,8 @@ transform: translateZ(0);`}
           A more simple alternative is "will-change," which allows you to specify the exact property to optimize.
         </p>
 
+        <StatsTable data={supportTableThree} />
+
 <Code language="scss">
 {`will-change: auto;
 will-change: scroll-position;
@@ -267,6 +285,8 @@ will-change: left, top;`}
         </p>
 
         <h2>Tactic: only apply composite layers before the user interacts</h2>
+
+        <StatsTable data={supportTableFour} />
 
         <p>
           I have created websites that have a lot of DOM elements possessing compositing layers. Sometimes the maximum amount of memory consumed is surpassed, and the page is forced to close. An example of this is a news feed with many social interactions and nested comments.
@@ -292,7 +312,7 @@ el.addEventListener('animationEnd', cleanup);`}
 </Code>
 
         <p>
-          You can also use transform instead of "will-change."
+          You can also use transform instead of "will-change." if you need to support Microsoft Edge browser.
         </p>
 
 <Code language="javascript">
@@ -311,6 +331,8 @@ el.addEventListener('animationEnd', cleanup);`}
 </Code>
 
         <h2>Tactic: taking advantage of the human eye.</h2>
+
+        <StatsTable data={supportTableFive}/>
 
         <p>
           Human research tells us that there is a 100-millisecond window before the user notices anything. If you trigger an animation within 100-milliseconds, you can still create the feeling on an immediate response.
