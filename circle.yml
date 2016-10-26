@@ -3,6 +3,7 @@ general:
   branches:
     only:
       - master
+      - development
 
 machine:
   node:
@@ -25,4 +26,4 @@ deployment:
   production:
     branch: master
     commands:
-      - npm run build
+      - npm run deploy

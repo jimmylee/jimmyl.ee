@@ -40,8 +40,8 @@
       box-sizing: border-box;
       padding: 16px;
       box-shadow: 0 0px 0px 0px #797979;
-      border: 1px solid #ECECEC;
-      background-color: #FFFFFF;
+      border: 1px solid $colors-border;
+      background-color: $colors-background;
       margin-bottom: 24px;
       text-align: center;
 
@@ -62,6 +62,6 @@
     @include layout-absolute-centering();
     height: 100%;
     width: 1px;
-    background-color: #ECECEC;
+    background-color: $colors-border;
   }
 }

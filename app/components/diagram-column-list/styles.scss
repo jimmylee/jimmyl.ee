@@ -22,7 +22,6 @@
   }
 
   &-item {
-    // @include text-subtitle-description();
     @include text-subtitle-ui();
     text-align: left;
     display: flex;
