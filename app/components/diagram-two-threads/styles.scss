@@ -38,14 +38,14 @@
       @include transition-card-lift();
       line-height: 1.2;
       z-index: 1;
-      background-color: #FFFFFF;
+      background-color: $colors-background;
       position: absolute;
       box-sizing: border-box;
       left: 0;
       height: 72px;
       padding: 8px;
       text-align: center;
-      border: 1px solid #ECECEC;
+      border: 1px solid $colors-border;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -61,13 +61,13 @@
       line-height: 1.2;
       z-index: 1;
       position: absolute;
-      background-color: #FFFFFF;
+      background-color: $colors-background;
       box-sizing: border-box;
       right: 0;
       height: 72px;
       padding: 8px;
       text-align: center;
-      border: 1px solid #ECECEC;
+      border: 1px solid $colors-border;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -82,7 +82,7 @@
   &-middleLine {
     position: absolute;
     height: 1px;
-    background-color: #ECECEC;
+    background-color: $colors-border;
 
     &:before {
       content: "";
@@ -92,15 +92,15 @@
       top: -4px;
       left: -4px;
       border-radius: 100%;
-      box-shadow: inset 0px 0px 0px 2px #ECECEC;
-      background-color: #FFFFFF;
+      box-shadow: inset 0px 0px 0px 2px $colors-border;
+      background-color: $colors-background;
     }
 
     &--emphasis {
-      background-color: red;
+      background-color: $colors-warning;
 
       &:before {
-        box-shadow: inset 0px 0px 0px 2px red;
+        box-shadow: inset 0px 0px 0px 2px $colors-warning;
       }
     }
   }
@@ -110,7 +110,7 @@
     right: auto;
     height: 100%;
     width: 1px;
-    background-color: #ECECEC;
+    background-color: $colors-border;
   }
 
   &-rightLine {
@@ -118,6 +118,6 @@
     left: auto;
     height: 100%;
     width: 1px;
-    background-color: #ECECEC;
+    background-color: $colors-border;
   }
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 export default React.createClass({
   propTypes: {
     active: React.PropTypes.bool,
+    chosen: React.PropTypes.bool,
     description: React.PropTypes.string,
     index: React.PropTypes.number,
     title: React.PropTypes.string,
@@ -26,11 +27,16 @@ export default React.createClass({
     }
 
     const rightClasses = classnames('navigationItem-right', {
-      'navigationItem-right--visible': active
+      'navigationItem-right--visible': active,
+      'navigationItem-right--chosen': window.location.pathname === url
+    });
+
+    const itemClasses = classnames('navigationItem', {
+      'navigationItem--chosen': window.location.pathname === url
     });
 
     return (
-      <div className="navigationItem">
+      <div className={itemClasses}>
         <figure className="navigationItem-left" children={listNumber} />
         <Link className={rightClasses} to={url}>
           <div className="navigationItem-title" children={title} />

@@ -1,7 +1,10 @@
-$colors-border: rgba(238, 238, 238, 1);
-$colors-black: #222222;
-$colors-dark-gray: #595959;
-$colors-gray: #767676;
+$colors-border: rgba(222, 222, 222, 1);
+$colors-black: rgba(51, 51, 51, 1);
+$colors-dark-gray: rgba(133, 133, 133, 1);
+$colors-gray: rgba(100, 100, 100, 1);
+$colors-accent: #54FF9F; //seafoam
+$colors-warning: #FF0000; //red
+$colors-background: rgba(247, 247, 247, 1);
 
 $defaultCurve: cubic-bezier(0.25, 0.1, 0.25, 1);
 

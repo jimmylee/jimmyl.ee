@@ -3,6 +3,7 @@ general:
   branches:
     only:
       - master
+      - development
 
 machine:
   node:
@@ -26,3 +27,4 @@ deployment:
     branch: master
     commands:
       - npm run build
+      - aws s3 sync build s3://jimmyl.ee/docs/

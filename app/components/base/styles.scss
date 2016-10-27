@@ -3,23 +3,22 @@
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  padding-bottom: 128px;
 
   &-content {
     display: block;
     position: relative;
     margin: auto;
     box-sizing: border-box;
-    padding: 0 32px 0 32px;
+    padding: 0 32px 128px 32px;
     width: 100%;
     max-width: 780px;
-    transition: 400ms $defaultCurve all;
+    transition: 280ms $defaultCurve all;
     transition-property: transform, opacity;
 
     @media #{$mobileBreakpoint} {
       z-index: 1;
       padding: 0;
-      margin: 0 32px 0 32px;
+      margin: 0 32px 0 48px;
       width: auto;
       max-with: none;
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../navigation';
+import { navItems } from '../../utilities/routing';
 
 import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
@@ -11,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
   return Object.assign({}, {
     actions: bindActionCreators(actions, dispatch)
   }, routeActions);
-}
+};
 
 const navigationInactivePx = 0;
 const navigationActivePx = 180;
@@ -38,7 +39,6 @@ const base = React.createClass({
 
     this._startTimeout = null;
     this._endTimeout = null;
-    this._interactionLock = true;
 
     return {
       navigationActive: false,
@@ -46,14 +46,6 @@ const base = React.createClass({
       x: navigationInactivePx,
       opacity: 1
     };
-  },
-
-  componentDidMount() {
-    if (this._interactionLock) {
-      window.setTimeout(() => {
-        this._interactionLock = false;
-      }, 1000);
-    }
   },
 
   componentWillUnmount() {
@@ -78,10 +70,6 @@ const base = React.createClass({
   },
 
   _handleShowNavigation() {
-    if (this._interactionLock) {
-      return;
-    }
-
     let size = navigationActivePx;
     if (getViewportSize().width >= mobileBreakpointNav) {
       size = navigationInactivePx;
@@ -117,9 +105,9 @@ const base = React.createClass({
               opacity: 1,
               y
             });
-          }, 400);
+          }, 300);
         });
-      }, 400);
+      }, 300);
     });
   },
 
@@ -140,6 +128,7 @@ const base = React.createClass({
     return (
       <div className="base">
         <Navigation
+          links={navItems}
           showNavigation={this._handleShowNavigation}
           hideNavigation={this._handleHideNavigation}
           active={navigationActive}

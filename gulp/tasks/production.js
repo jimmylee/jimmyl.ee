@@ -16,5 +16,5 @@ gulp.task('production', ['reset-build-directory'], function(cb) {
     'copy-index-html-to-build-directory',
     'copy-icons-to-build-directory',
     'eslint'
-  ], 'deploy-generated-assets', cb);
+  ], cb);
 });

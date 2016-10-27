@@ -2,26 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Item from '../navigation-item';
 
-const links = [
-  {
-    url: '/',
-    title: 'Foreword',
-    description: 'Some thoughts'
-  },
-  {
-    url: '/site-analysis',
-    title: 'Site Analysis',
-    description: 'Client bundle size, libraries used, and load time'
-  },
-  {
-    url: '/animation-performance',
-    title: 'Animation Performance',
-    description: 'Notes about the performance of CSS animations in the browser'
-  }
-];
-
 export default React.createClass({
   propTypes: {
+    links: React.PropTypes.array,
     showNavigation: React.PropTypes.func,
     hideNavigation: React.PropTypes.func,
     active: React.PropTypes.bool
@@ -76,18 +59,25 @@ export default React.createClass({
     }
   },
 
-  _handleMouseEnter() {
+  _handleMouseMove() {
+    if (this.props.active) {
+      return;
+    }
+
     window.clearTimeout(this._hideTimeout);
     this.props.showNavigation();
   },
 
   _handleTouchStart() {
+    if (this.props.active) {
+      return;
+    }
     window.clearTimeout(this._hideTimeout);
     this.props.showNavigation();
   },
 
   render() {
-    const { active } = this.props;
+    const { active, links } = this.props;
 
     const elements = links.map((e, i) => {
       const { url, title, description } = e;
@@ -107,7 +97,7 @@ export default React.createClass({
       <nav
         children={elements}
         className="navigation"
-        onMouseEnter={this._handleMouseEnter}
+        onMouseMove={this._handleMouseMove}
         onMouseLeave={this._handleMouseLeave}
         onTouchStart={this._handleTouchStart}
         ref="nav"
