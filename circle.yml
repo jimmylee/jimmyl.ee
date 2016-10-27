@@ -26,4 +26,5 @@ deployment:
   production:
     branch: master
     commands:
-      - npm run deploy
+      - npm run build
+      - aws s3 sync build s3://jimmyl.ee/docs/

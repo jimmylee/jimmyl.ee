@@ -5,8 +5,7 @@
   "scripts": {
     "start": "gulp development",
     "dev": "gulp development",
-    "build": "NODE_ENV=production gulp production",
-    "deploy": "NODE_ENV=production gulp deploy"
+    "build": "NODE_ENV=production gulp production"
   },
   "devDependencies": {
     "babel-core": "^6.5.0",
@@ -34,7 +33,6 @@
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
     "run-sequence": "^1.1.5",
-    "s3": "^4.4.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   },
