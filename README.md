@@ -3,7 +3,6 @@
 # WIP
 - write an app about meta tags.
 - write a component for creating meta tag html.
-- need to integrate amazon aws.
 - need to fix images and folder imports.
 - need to update dough.
 
