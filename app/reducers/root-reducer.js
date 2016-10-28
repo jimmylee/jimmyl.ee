@@ -19,7 +19,6 @@ export function showNavigation(pageNavigationActive, state) {
 }
 
 export function updatePagePosition(updates, state) {
-  console.log(updates);
   return merge(state, updates);
 }
 

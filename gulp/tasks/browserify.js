@@ -17,6 +17,7 @@ import config from '../config';
 
 function buildScript(file, watch) {
   var bundler = browserify({
+    extensions: ['.js', '.jsx'],
     entries: [config.sourceDirectory + '' + file],
     debug: !global.isProduction,
     cache: {},

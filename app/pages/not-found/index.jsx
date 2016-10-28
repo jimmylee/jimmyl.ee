@@ -1,5 +1,5 @@
 import React from 'react';
-import Content from '../../components/content';
+import Content from '../../components/content/index.jsx';
 
 const notFoundPage = React.createClass({
   render() {

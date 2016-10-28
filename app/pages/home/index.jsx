@@ -1,7 +1,7 @@
 import React from 'react';
-import Content from '../../components/content';
-import Header from '../../components/header';
-import List from '../../components/diagram-column-list';
+import Content from '../../components/content/index.jsx';
+import Header from '../../components/header/index.jsx';
+import List from '../../components/diagram-column-list/index.jsx';
 import { diagramOne, diagramTwo, diagramThree, diagramFour } from './diagrams';
 
 const currentYear = new Date().getFullYear();

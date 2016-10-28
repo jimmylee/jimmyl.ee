@@ -1,5 +1,5 @@
 import React from 'react';
-import { getViewportSize } from '../../utilities/window';
+import { getViewportSize } from '../../common/window';
 
 export default React.createClass({
   propTypes: {

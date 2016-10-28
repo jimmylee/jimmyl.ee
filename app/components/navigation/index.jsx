@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Item from '../navigation-item';
+import Item from '../navigation-item/index.jsx';
 
 export default React.createClass({
   propTypes: {

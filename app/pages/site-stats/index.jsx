@@ -1,8 +1,8 @@
 import React from 'react';
-import Content from '../../components/content';
-import Header from '../../components/header';
-import List from '../../components/diagram-column-list';
-import StatsTable from '../../components/diagram-stats-table';
+import Content from '../../components/content/index.jsx';
+import Header from '../../components/header/index.jsx';
+import List from '../../components/diagram-column-list/index.jsx';
+import StatsTable from '../../components/diagram-stats-table/index.jsx';
 import { connect } from 'react-redux';
 import { diagramThree } from './diagrams';
 

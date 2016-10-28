@@ -1,12 +1,12 @@
 import React from 'react';
-import Footer from '../../components/footer';
-import Code from '../../components/code';
-import Content from '../../components/content';
-import Header from '../../components/header';
-import PipelineDiagram from '../../components/diagram-pipeline';
-import TwoThreadDiagram from '../../components/diagram-two-threads';
-import StatsTable from '../../components/diagram-stats-table';
-import List from '../../components/diagram-column-list';
+import Footer from '../../components/footer/index.jsx';
+import Code from '../../components/code/index.jsx';
+import Content from '../../components/content/index.jsx';
+import Header from '../../components/header/index.jsx';
+import PipelineDiagram from '../../components/diagram-pipeline/index.jsx';
+import TwoThreadDiagram from '../../components/diagram-two-threads/index.jsx';
+import StatsTable from '../../components/diagram-stats-table/index.jsx';
+import List from '../../components/diagram-column-list/index.jsx';
 import {
   diagramOne,
   diagramTwo,

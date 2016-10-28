@@ -1,11 +1,11 @@
 import React from 'react';
-import Navigation from '../navigation';
-import { navItems } from '../../utilities/routing';
+import Navigation from '../navigation/index.jsx';
+import { navItems } from '../../common/routing';
 
 import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
-import { getViewportSize } from '../../utilities/window';
+import { getViewportSize } from '../../common/window';
 import * as actions from '../../actions/index';
 
 const mapStateToProps = (state) => {
