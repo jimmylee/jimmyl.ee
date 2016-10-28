@@ -8,21 +8,21 @@ import { diagramThree } from './diagrams';
 
 const mapStateToProps = (state) => {
   return {
-    loadTime: state.rootReducer.loadTime
+    statsLoadTime: state.rootReducer.statsLoadTime
   };
 }
 
 const pageStats = React.createClass({
   propTypes: {
-    loadTime: React.PropTypes.number
+    statsLoadTime: React.PropTypes.number
   },
 
   render() {
-    const { loadTime } = this.props;
+    const { statsLoadTime } = this.props;
     const pageStats = [
       {
         name: 'Load Time',
-        data: `${loadTime}s`
+        data: `${statsLoadTime}s`
       },
       {
         name: 'JavaScript',

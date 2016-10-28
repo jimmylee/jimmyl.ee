@@ -8,6 +8,15 @@ import { bindActionCreators } from 'redux';
 import { getViewportSize } from '../../utilities/window';
 import * as actions from '../../actions/index';
 
+const mapStateToProps = (state) => {
+  return {
+    pageNavigationActive: state.rootReducer.pageNavigationActive,
+    pageX: state.rootReducer.pageX,
+    pageY: state.rootReducer.pageY,
+    pageOpacity: state.rootReducer.pageOpacity
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return Object.assign({}, {
     actions: bindActionCreators(actions, dispatch)
@@ -22,16 +31,19 @@ const mobileBreakpointNav = 1200;
 const base = React.createClass({
   propTypes: {
     actions: React.PropTypes.object,
-    children: React.PropTypes.element
+    children: React.PropTypes.element,
+    pageNavigationActive: React.PropTypes.bool,
+    pageX: React.PropTypes.number,
+    pageY: React.PropTypes.number,
+    pageOpacity: React.PropTypes.number
   },
 
-  getInitialState() {
+  componentWillMount() {
     window.onload = () => {
-      const { actions } = this.props;
       const { domContentLoadedEventEnd, navigationStart } = window.performance.timing;
       const loadTime = (domContentLoadedEventEnd - navigationStart) / 1000;
 
-      return actions.saveLoadTime(loadTime);
+      return this.props.actions.saveLoadTime(loadTime);
     }
 
     window.addEventListener('resize', this._handleResize);
@@ -40,12 +52,7 @@ const base = React.createClass({
     this._startTimeout = null;
     this._endTimeout = null;
 
-    return {
-      navigationActive: false,
-      y: this._getTranslateY(),
-      x: navigationInactivePx,
-      opacity: 1
-    };
+    this.props.actions.updatePagePosition({ y: this._getTranslateY(), x: navigationInactivePx });
   },
 
   componentWillUnmount() {
@@ -66,7 +73,7 @@ const base = React.createClass({
       return navigationInactivePx;
     }
 
-    return this.state.navigationActive ? navigationActivePx : navigationInactivePx;
+    return this.props.pageNavigationActive ? navigationActivePx : navigationInactivePx;
   },
 
   _handleShowNavigation() {
@@ -75,11 +82,13 @@ const base = React.createClass({
       size = navigationInactivePx;
     }
 
-    this.setState({ navigationActive: true, x: size });
+    this.props.actions.showNavigation(true);
+    this.props.actions.updatePagePosition({ x: size });
   },
 
   _handleHideNavigation() {
-    this.setState({ navigationActive: false, x: navigationInactivePx });
+    this.props.actions.showNavigation(false);
+    this.props.actions.updatePagePosition({ x: navigationInactivePx });
   },
 
   _handlePageEnter(e) {
@@ -90,39 +99,38 @@ const base = React.createClass({
     const y = this._getTranslateY();
     const offset = getViewportSize().height * 0.25;
 
-    this.setState({
-      opacity: 0,
+    this.props.actions.updatePagePosition({
+      alpha: 0,
       y: y + offset
-    }, () => {
-      this._startTimeout = setTimeout(() => {
-        this.setState({
-          opacity: 0,
-          y: y - offset
-        }, () => {
-          this._endTimeout = window.setTimeout(() => {
-            callback();
-            this.setState({
-              opacity: 1,
-              y
-            });
-          }, 300);
+    });
+
+    this._startTimeout = window.setTimeout(() => {
+      this.props.actions.updatePagePosition({
+        y: y - offset
+      });
+
+      this._endTimeout = window.setTimeout(() => {
+        callback();
+        this.props.actions.updatePagePosition({
+          alpha: 1,
+          y
         });
       }, 300);
-    });
+    }, 300);
   },
 
   _handleResize() {
-    this.setState({ y: this._getTranslateY(), x: this._getTranslateX() });
+    this.props.actions.updatePagePosition({
+      y: this._getTranslateY(),
+      x: this._getTranslateX()
+    });
   },
 
   render() {
-    const { children } = this.props;
-    const { navigationActive } = this.state;
-    const { x, y, opacity } = this.state;
-
+    const { children, pageNavigationActive, pageX, pageY, pageOpacity } = this.props;
     const baseStyles = {
-      opacity,
-      transform: `translate3d(${x}px, ${y}px, 0)`
+      opacity: pageOpacity,
+      transform: `translate3d(${pageX}px, ${pageY}px, 0)`
     };
 
     return (
@@ -131,7 +139,7 @@ const base = React.createClass({
           links={navItems}
           showNavigation={this._handleShowNavigation}
           hideNavigation={this._handleHideNavigation}
-          active={navigationActive}
+          active={pageNavigationActive}
         />
         <div className="base-content" style={baseStyles}>
           {children}
@@ -142,6 +150,6 @@ const base = React.createClass({
 });
 
 export default connect(
-  () => { return {} },
+  mapStateToProps,
   mapDispatchToProps
 )(base);
