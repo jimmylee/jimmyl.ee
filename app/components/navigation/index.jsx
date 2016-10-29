@@ -4,19 +4,19 @@ import Item from '../navigation-item/index.jsx';
 
 export default React.createClass({
   propTypes: {
+    active: React.PropTypes.bool,
+    currentPath: React.PropTypes.string,
     links: React.PropTypes.array,
     showNavigation: React.PropTypes.func,
-    hideNavigation: React.PropTypes.func,
-    active: React.PropTypes.bool
+    hideNavigation: React.PropTypes.func
   },
 
-  getInitialState() {
+  componentWillMount() {
     window.addEventListener('click', this._handleOutsideClick);
     window.addEventListener('touchstart', this._handleOutsideClick);
     window.addEventListener('scroll', this._handleScroll);
 
     this._hideTimeout;
-    return null;
   },
 
   componentWillUnmount() {
@@ -47,14 +47,14 @@ export default React.createClass({
     }, 400);
   },
 
-  _handleOutsideClick(e) {
+  _handleOutsideClick({ target }) {
     if (!this.props.active) {
       return false;
     }
 
     window.clearTimeout(this._hideTimeout);
     const el = ReactDOM.findDOMNode(this.refs.nav);
-    if (el && !el.contains(e.target)) {
+    if (el && !el.contains(target)) {
       this.props.hideNavigation();
     }
   },
@@ -72,18 +72,24 @@ export default React.createClass({
     if (this.props.active) {
       return;
     }
+
     window.clearTimeout(this._hideTimeout);
     this.props.showNavigation();
   },
 
   render() {
-    const { active, links } = this.props;
+    const { active, currentPath, links } = this.props;
 
-    const elements = links.map((e, i) => {
-      const { url, title, description } = e;
+    const elements = links.map((each, i) => {
+      const { url, title, description, hide } = each;
+      if (hide) {
+        return;
+      }
+
       return (
         <Item
           active={active}
+          currentPath={currentPath}
           description={description}
           key={i}
           index={i}

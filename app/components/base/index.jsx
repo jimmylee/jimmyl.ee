@@ -1,11 +1,10 @@
 import React from 'react';
 import Navigation from '../navigation/index.jsx';
-import { navItems } from '../../common/routing';
+import { navigationItems } from '../../common/routing';
+import { getViewportSize } from '../../common/window';
 
 import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
-import { getViewportSize } from '../../common/window';
 import * as actions from '../../actions/index';
 
 const mapStateToProps = (state) => {
@@ -13,14 +12,15 @@ const mapStateToProps = (state) => {
     pageNavigationActive: state.rootReducer.pageNavigationActive,
     pageX: state.rootReducer.pageX,
     pageY: state.rootReducer.pageY,
-    pageOpacity: state.rootReducer.pageOpacity
+    pageOpacity: state.rootReducer.pageOpacity,
+    pathname: state.route.location.pathname
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return Object.assign({}, {
     actions: bindActionCreators(actions, dispatch)
-  }, routeActions);
+  });
 };
 
 const navigationInactivePx = 0;
@@ -127,7 +127,7 @@ const base = React.createClass({
   },
 
   render() {
-    const { children, pageNavigationActive, pageX, pageY, pageOpacity } = this.props;
+    const { children, pageNavigationActive, pageX, pageY, pageOpacity, pathname } = this.props;
     const baseStyles = {
       opacity: pageOpacity,
       transform: `translate3d(${pageX}px, ${pageY}px, 0)`
@@ -136,14 +136,13 @@ const base = React.createClass({
     return (
       <div className="base">
         <Navigation
-          links={navItems}
-          showNavigation={this._handleShowNavigation}
-          hideNavigation={this._handleHideNavigation}
           active={pageNavigationActive}
+          currentPath={pathname}
+          hideNavigation={this._handleHideNavigation}
+          links={navigationItems}
+          showNavigation={this._handleShowNavigation}
         />
-        <div className="base-content" style={baseStyles}>
-          {children}
-        </div>
+        <div className="base-content" style={baseStyles}>{children}</div>
       </div>
     );
   }
