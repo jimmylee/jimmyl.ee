@@ -16,7 +16,7 @@ export const navigationItems = [
   (n => {
     const url = baseRoute;
     const title = 'Foreword';
-    const description = 'Create a web app for sharing experiments and research.';
+    const description = 'This is a web application for sharing experiments and research.';
     const component = decorateComponentWithProps(pageHome, { description });
 
     return { component, description, title, url };

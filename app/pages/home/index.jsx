@@ -18,7 +18,7 @@ const pageHome = React.createClass({
         </Header>
 
         <p>
-          It is hard to keep track of projects and experiments and over the years I’ve thrown away many lines of code and lost notes. So this project is an opportunity to keep a living version of everything, as well as celebrate what is important to me: the craft of creating websites.
+          It is hard to keep track of experiments and over the years I’ve thrown away many lines of code and lost useful notes. So this project is an opportunity to keep a living version of everything, as well as celebrate what is important to me: the craft of creating websites.
         </p>
 
         <p>

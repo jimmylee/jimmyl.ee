@@ -46,9 +46,16 @@
   }
 
   &--chosen {
-    .navigationItem-title,
-    &:hover .navigationItem-title {
+    transform: translate3d(-24px, 0, 0);
+
+    .navigationItem-title {
       background: $colors-accent;
+    }
+
+    &:hover {
+      .navigationItem-title {
+        background: $colors-accent;
+      }
     }
   }
 
