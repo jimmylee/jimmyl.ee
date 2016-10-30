@@ -1,6 +1,12 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/dist/light"
 import { github } from 'react-syntax-highlighter/dist/styles';
+
+import js from './javascript';
+import scss from './scss';
+
+registerLanguage('javascript', js);
+registerLanguage('scss', scss);
 
 const syntaxHighlighterStyles = {
   backgroundColor: 'transparent',

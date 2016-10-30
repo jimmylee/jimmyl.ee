@@ -1,12 +1,12 @@
 import React from 'react';
-import Footer from '../../components/footer/index.jsx';
-import Code from '../../components/code/index.jsx';
-import Content from '../../components/content/index.jsx';
-import Header from '../../components/header/index.jsx';
-import PipelineDiagram from '../../components/diagram-pipeline/index.jsx';
-import TwoThreadDiagram from '../../components/diagram-two-threads/index.jsx';
-import StatsTable from '../../components/diagram-stats-table/index.jsx';
-import List from '../../components/diagram-column-list/index.jsx';
+import Footer from '../../components/footer/index';
+import Code from '../../components/code/index';
+import Content from '../../components/content/index';
+import Header from '../../components/header/index';
+import PipelineDiagram from '../../components/diagram-pipeline/index';
+import TwoThreadDiagram from '../../components/diagram-two-threads/index';
+import StatsTable from '../../components/diagram-stats-table/index';
+import List from '../../components/diagram-column-list/index';
 import {
   diagramOne,
   diagramTwo,
@@ -25,9 +25,7 @@ const pageCSSAnimations = React.createClass({
     return (
       <Content>
         <Header>
-          <h1>
-            My notes on CSS animation performance in the browser.
-          </h1>
+          <h1>{this.props.description}</h1>
         </Header>
 
         <p>

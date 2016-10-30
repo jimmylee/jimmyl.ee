@@ -30,7 +30,7 @@ function buildScript(file, watch) {
     bundler.on('update', rebundle);
   }
 
-  bundler.transform(babelify);
+  bundler.transform(babelify, { presets: ["es2015", "react", 'stage-0'] });
 
   function rebundle() {
     let stream = bundler.bundle();

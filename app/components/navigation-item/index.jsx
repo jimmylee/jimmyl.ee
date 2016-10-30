@@ -3,24 +3,26 @@ import classnames from 'classnames';
 import { Link } from 'react-router';
 
 export default React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
   propTypes: {
+    actions: React.PropTypes.object,
     active: React.PropTypes.bool,
     currentPath: React.PropTypes.string,
-    description: React.PropTypes.string,
+    description: React.PropTypes.node,
     index: React.PropTypes.number,
     title: React.PropTypes.string,
     url: React.PropTypes.string
   },
 
+  _handleClick: function(e) {
+    this.context.router.push(this.props.url);
+  },
+
   render() {
-    const {
-      active,
-      currentPath,
-      description,
-      index,
-      url,
-      title
-    } = this.props;
+    const { active, currentPath, description, index, url, title } = this.props;
 
     let listNumber = index + 1;
     if (listNumber < 10) {
@@ -39,10 +41,12 @@ export default React.createClass({
     return (
       <div className={itemClasses}>
         <figure className="navigationItem-left" children={listNumber} />
-        <Link className={rightClasses} to={url}>
+        <div className={rightClasses} onClick={this._handleClick}>
           <div className="navigationItem-title" children={title} />
-          <div className="navigationItem-description" children={description} />
-        </Link>
+          <div className="navigationItem-description">
+            {description}
+          </div>
+        </div>
       </div>
     );
   }

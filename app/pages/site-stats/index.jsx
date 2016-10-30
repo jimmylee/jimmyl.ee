@@ -26,22 +26,22 @@ const pageStats = React.createClass({
       },
       {
         name: 'JavaScript',
-        data: '350kbs'
+        data: '537kbs'
       },
       {
         name: 'CSS',
-        data: '15kbs'
+        data: '16kbs'
       }
     ];
 
     return (
       <Content>
         <Header>
-          <h1>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>.</h1>
+          <h1>{this.props.description}</h1>
         </Header>
 
         <p>
-        For dough I picked <a href="https://github.com/gulpjs/gulp">Gulp</a> instead of <a href="https://github.com/webpack/webpack">Webpack</a>. I always use Webpack for <a href="https://github.com/facebook/react">React</a> projects so it feels nice to do things differently for fun.
+        For dough I picked <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="http://browserify.org/">Browserify</a> instead of <a href="https://github.com/webpack/webpack">Webpack</a>. I always use Webpack for <a href="https://github.com/facebook/react">React</a> projects so it feels nice to do things differently for fun.
         </p>
 
         <p>
@@ -49,12 +49,10 @@ const pageStats = React.createClass({
         </p>
 
         <p>
-        All the assets are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket.
+        All the assets are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket. They are without gzip.
         </p>
 
         <StatsTable data={pageStats} />
-
-        <List data={diagramThree} />
       </Content>
     );
   }

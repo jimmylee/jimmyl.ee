@@ -13,13 +13,11 @@ const pageHome = React.createClass({
     return (
       <Content>
         <Header>
-          <h1>
-            The purpose: create a web app for sharing experiments and research.
-          </h1>
+          <h1>{this.props.description}</h1>
         </Header>
 
         <p>
-          It is hard to keep projects and experiments and over the {yearsSince} years I’ve thrown away many lines of code and lost notes. So this project is an opportunity to keep a living version of everything, as well as celebrate what is important to me: the craft of creating websites.
+          It is hard to keep track of projects and experiments and over the years I’ve thrown away many lines of code and lost notes. So this project is an opportunity to keep a living version of everything, as well as celebrate what is important to me: the craft of creating websites.
         </p>
 
         <p>
