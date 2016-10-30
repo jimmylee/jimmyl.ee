@@ -4,14 +4,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: flex-start;
   margin-bottom: 24px;
   width: 100%;
   transition: transform 200ms $defaultCurve;
-
-  &:active {
-    transform: translate3d(-4px, -4px, 0);
-  }
 
   &-left {
     @include text-subtitle();
@@ -21,12 +17,14 @@
   }
 
   &-right {
+    z-index: 10;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
+    height: 100%;
     padding-right: 0 8px 0 0;
     transition: 220ms $defaultCurve all;
     transition-property: visibility, opacity, transform;
@@ -41,19 +39,27 @@
     }
   }
 
-  &--chosen {
+  &:hover {
     .navigationItem-title {
+      background: lighten($colors-accent, 15%);
+    }
+  }
+
+  &--chosen {
+    .navigationItem-title,
+    &:hover .navigationItem-title {
       background: $colors-accent;
     }
   }
 
   &-title {
     @include text-subtitle();
+    transition: background-color 200ms $defaultCurve;
     margin-bottom: 3px;
   }
 
   &-description {
-    @include text-subtitle-ui();
+    @include text-subtitle-description();
 
     a {
       pointer-events: none;

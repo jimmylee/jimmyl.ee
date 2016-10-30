@@ -22,7 +22,7 @@
   }
 
   &-item {
-    @include text-subtitle-ui();
+    @include text-subtext();
     text-align: left;
     display: flex;
     justify-content: space-between;

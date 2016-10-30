@@ -30,7 +30,10 @@ export default React.createClass({
       return false;
     }
 
-    window.clearTimeout(this._hideTimeout);
+    if (this._hideTimeout) {
+      window.clearTimeout(this._hideTimeout);
+    }
+
     this._hideTimeout = window.setTimeout(() => {
       this.props.hideNavigation();
     }, 400);
@@ -41,7 +44,10 @@ export default React.createClass({
       return false;
     }
 
-    window.clearTimeout(this._hideTimeout);
+    if (this._hideTimeout) {
+      window.clearTimeout(this._hideTimeout);
+    }
+
     this._hideTimeout = window.setTimeout(() => {
       this.props.hideNavigation();
     }, 400);
@@ -52,7 +58,10 @@ export default React.createClass({
       return false;
     }
 
-    window.clearTimeout(this._hideTimeout);
+    if (this._hideTimeout) {
+      window.clearTimeout(this._hideTimeout);
+    }
+
     const el = ReactDOM.findDOMNode(this.refs.nav);
     if (el && !el.contains(target)) {
       this.props.hideNavigation();
@@ -64,7 +73,10 @@ export default React.createClass({
       return;
     }
 
-    window.clearTimeout(this._hideTimeout);
+    if (this._hideTimeout) {
+      window.clearTimeout(this._hideTimeout);
+    }
+
     this.props.showNavigation();
   },
 
@@ -73,7 +85,10 @@ export default React.createClass({
       return;
     }
 
-    window.clearTimeout(this._hideTimeout);
+    if (this._hideTimeout) {
+      window.clearTimeout(this._hideTimeout);
+    }
+
     this.props.showNavigation();
   },
 
@@ -91,8 +106,9 @@ export default React.createClass({
           active={active}
           currentPath={currentPath}
           description={description}
-          key={i}
           index={i}
+          key={i}
+          onTouchStart={this._handleTouchStart}
           title={title}
           url={url}
         />
@@ -105,7 +121,6 @@ export default React.createClass({
         className="navigation"
         onMouseMove={this._handleMouseMove}
         onMouseLeave={this._handleMouseLeave}
-        onTouchStart={this._handleTouchStart}
         ref="nav"
       />
     );

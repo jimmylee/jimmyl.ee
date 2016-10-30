@@ -48,29 +48,12 @@
   font-family: helvetica, sans-serif;
 }
 
-@mixin typography-bold() {
-  font-weight: 700;
-}
-
-@mixin typography-normal() {
-  font-weight: 400;
-}
-
-@mixin typescale-greatest() {
-  font-size: 1.602em;
-}
-
-@mixin typescale-huge() {
-  font-size: 1.424em;
-}
-
-@mixin typescale-large() {
-  font-size: 1.266em;
-}
-
-@mixin typescale-medium() {
-  font-size: 1.125em;
-}
+@mixin typography-bold() { font-weight: 700; }
+@mixin typography-normal() { font-weight: 400; }
+@mixin typescale-greatest() { font-size: 1.602em; }
+@mixin typescale-huge() { font-size: 1.424em; }
+@mixin typescale-large() { font-size: 1.266em; }
+@mixin typescale-medium() { font-size: 1.125em; }
 
 @mixin typescale-normal() {
   font-size: 16px;
@@ -80,17 +63,9 @@
   }
 }
 
-@mixin typescale-small() {
-  font-size: 0.889em;
-}
-
-@mixin typescale-tiny() {
-  font-size: 0.79em;
-}
-
-@mixin typescale-smallest() {
-  font-size: 0.702em;
-}
+@mixin typescale-small() { font-size: 0.889em; }
+@mixin typescale-tiny() { font-size: 0.79em; }
+@mixin typescale-smallest() { font-size: 0.702em; }
 
 @mixin text-subtitle() {
   @include typography-ui();
@@ -117,8 +92,16 @@
   line-height: 1.3;
 }
 
-@mixin text-subtitle-ui() {
+@mixin text-subtitle-description() {
   @include typography-regular();
   @include typescale-tiny();
   line-height: 1.3;
+}
+
+@mixin text-subtext () {
+  @include typography-ui();
+  @include typescale-smallest();
+  line-height: 1.3;
+  font-style: normal;
+  letter-spacing: 0.088em;
 }

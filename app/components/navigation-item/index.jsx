@@ -13,11 +13,12 @@ export default React.createClass({
     currentPath: React.PropTypes.string,
     description: React.PropTypes.node,
     index: React.PropTypes.number,
+    onTouchStart: React.PropTypes.func,
     title: React.PropTypes.string,
     url: React.PropTypes.string
   },
 
-  _handleClick: function(e) {
+  _handleClick: function() {
     this.context.router.push(this.props.url);
   },
 
@@ -40,8 +41,11 @@ export default React.createClass({
 
     return (
       <div className={itemClasses}>
-        <figure className="navigationItem-left" children={listNumber} />
-        <div className={rightClasses} onClick={this._handleClick}>
+        <figure className="navigationItem-left"
+         children={listNumber}
+         onTouchStart={this.props.onTouchStart}/>
+        <div className={rightClasses}
+          onClick={this._handleClick}>
           <div className="navigationItem-title" children={title} />
           <div className="navigationItem-description">
             {description}

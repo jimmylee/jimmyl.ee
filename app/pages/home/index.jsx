@@ -1,7 +1,8 @@
 import React from 'react';
-import Content from '../../components/content/index.jsx';
-import Header from '../../components/header/index.jsx';
-import List from '../../components/diagram-column-list/index.jsx';
+import Content from '../../components/content/index';
+import Header from '../../components/header/index';
+import Footer from '../../components/footer/index';
+import List from '../../components/diagram-column-list/index';
 import { diagramOne, diagramTwo, diagramThree, diagramFour } from './diagrams';
 
 const currentYear = new Date().getFullYear();
@@ -24,10 +25,12 @@ const pageHome = React.createClass({
           So hello and nice to meet you! I'm Jim, an engineer who builds stuff for the web.
         </p>
 
-        <List data={diagramOne} />
-        <List data={diagramTwo} />
-        <List data={diagramThree} />
-        <List data={diagramFour} />
+        <Footer>
+          <List data={diagramOne} />
+          <List data={diagramTwo} />
+          <List data={diagramThree} />
+          <List data={diagramFour} />
+        </Footer>
       </Content>
     );
   }

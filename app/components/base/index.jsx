@@ -92,8 +92,13 @@ const base = React.createClass({
   },
 
   _handlePageEnter(e) {
-    window.clearTimeout(this._startTimeout);
-    window.clearTimeout(this._endTimeout);
+    if (this._startTimeout) {
+      window.clearTimeout(this._startTimeout);
+    }
+
+    if (this._endTimeout) {
+      window.clearTimeout(this._endTimeout);
+    }
 
     const { callback } = e.detail;
     const y = this._getTranslateY();
@@ -108,15 +113,18 @@ const base = React.createClass({
       this.props.actions.updatePagePosition({
         y: y - offset
       });
-
-      this._endTimeout = window.setTimeout(() => {
-        callback();
-        this.props.actions.updatePagePosition({
-          alpha: 1,
-          y
-        });
-      }, 300);
     }, 300);
+
+    this._endTimeout = window.setTimeout(() => {
+      callback();
+      this.props.actions.updatePagePosition({
+        alpha: 1,
+        y
+      });
+
+      this._startTimeout = null;
+      this._endTimeout = null;
+    }, 600);
   },
 
   _handleResize() {
