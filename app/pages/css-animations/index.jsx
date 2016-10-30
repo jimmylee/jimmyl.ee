@@ -43,17 +43,17 @@ const pageCSSAnimations = React.createClass({
         <PipelineDiagram tree={diagramOne} />
 
         <p>
-          Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible. Also, the rest these notes work under the assumption that loading bitmaps into memory are expensive but going deep on that topic is another set of notes (schedulers, commits, and low-level programming specifics).
+          After these tasks are complete, another thread we will discuss, the compositor thread will be able to execute instructions to use the bitmaps in memory to draw the layers to the screen whenever necessary.
         </p>
 
         <p>
-          To achieve sixty frames per second, There is a window of ~16.7-milliseconds for both threads to finish executing instructions and draw the updates. I've decided to use red to decorate an operation as expensive.
+          To achieve sixty frames per second, There is a window of ~16.7-milliseconds for both threads to finish executing instructions and draw the updates. In the diagram below, I've decided to use red to decorate an operation as expensive.
         </p>
 
         <TwoThreadDiagram tree={diagramFour} />
 
         <p>
-          Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible.
+          Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible. Also, the rest these notes work under the assumption that loading bitmaps into memory are expensive but going deep on that topic is another set of notes (schedulers, commits, and low-level programming specifics).
         </p>
 
         <h2>Dive into compositing</h2>
@@ -264,7 +264,7 @@ transform: translateZ(0);`}
         </p>
 
         <p>
-          A more simple alternative is "will-change," which allows you to specify the exact property to optimize.
+          A more simple alternative is "will-change" which allows you to specify the exact property to optimize.
         </p>
 
         <StatsTable data={supportTableThree} />
@@ -310,7 +310,7 @@ el.addEventListener('animationEnd', cleanup);`}
 </Code>
 
         <p>
-          You can also use transform instead of "will-change." if you need to support Microsoft Edge browser.
+          You can also use transform instead of "will-change" if you need to support Microsoft Edge browser.
         </p>
 
 <Code language="javascript">

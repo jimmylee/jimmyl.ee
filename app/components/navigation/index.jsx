@@ -108,7 +108,6 @@ export default React.createClass({
           description={description}
           index={i}
           key={i}
-          onTouchStart={this._handleTouchStart}
           title={title}
           url={url}
         />
@@ -119,6 +118,7 @@ export default React.createClass({
       <nav
         children={elements}
         className="navigation"
+        onTouchStart={this._handleTouchStart}
         onMouseMove={this._handleMouseMove}
         onMouseLeave={this._handleMouseLeave}
         ref="nav"
