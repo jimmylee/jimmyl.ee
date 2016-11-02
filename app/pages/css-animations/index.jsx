@@ -53,7 +53,7 @@ const pageCSSAnimations = React.createClass({
         <TwoThreadDiagram tree={diagramFour} />
 
         <p>
-          Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible. Also, the rest these notes work under the assumption that loading bitmaps into memory are expensive but going deep on that topic is another set of notes (schedulers, commits, and low-level programming specifics).
+          Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible. Also, the rest of these notes work under the assumption that loading bitmaps into memory are expensive but going deep on that topic is another set of notes (schedulers, commits, and low-level programming specifics).
         </p>
 
         <h2>Dive into compositing</h2>
