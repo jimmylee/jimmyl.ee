@@ -28,14 +28,14 @@ export default React.createClass({
     const browserWidth = getViewportSize().width;
 
     let width = '75%';
-    let fontSize = 16;
+    let fontSize = 14;
     let nodeHeight = 150;
 
     if (browserWidth < 350) {
       return {
         width: '90%',
-        fontSize: 10,
-        nodeHeight: 180
+        fontSize: 8,
+        nodeHeight: 155
       };
     }
 
@@ -48,11 +48,19 @@ export default React.createClass({
       };
     }
 
+    if (browserWidth < 520) {
+      return {
+        width: '90%',
+        fontSize: 12,
+        nodeHeight: 145
+      };
+    }
+
     if (browserWidth < 820) {
       return {
         width: '90%',
         fontSize: 12,
-        nodeHeight: 155
+        nodeHeight: 125
       };
     }
 

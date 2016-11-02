@@ -57,9 +57,9 @@ p {
 }
 
 h1 {
-  @include typescale-large();
+  @include typescale-greatest();
   line-height: 1.3em;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 h2 {

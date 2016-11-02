@@ -9,16 +9,14 @@
     position: relative;
     margin: auto;
     box-sizing: border-box;
-    padding: 0 32px 128px 32px;
+    padding: 0 $contentGutters 128px $contentGutters;
     width: 100%;
-    max-width: 780px;
+    max-width: $contentWidth;
     transition: 280ms $defaultCurve all;
     transition-property: transform, opacity;
 
-    @media (max-width: 844px) {
+    @media #{$mobileBreakpoint} {
       z-index: 1;
-      padding: 0;
-      margin: 0 32px 0 48px;
       width: auto;
       max-with: none;
     }

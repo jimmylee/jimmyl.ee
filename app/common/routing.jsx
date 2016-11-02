@@ -40,7 +40,7 @@ export const navigationItems = [
   (n => {
     const url = '/writing-css';
     const title = 'Performant CSS';
-    const description = 'Writing performant CSS creation for your web application.';
+    const description = 'Writing performant CSS object model creation for your web application.';
     const component = decorateComponentWithProps(pageWritingCSS, { description });
 
     return { component, description, title, url };

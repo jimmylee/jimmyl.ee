@@ -18,7 +18,7 @@ export default React.createClass({
   },
 
   _getCharacterSize() {
-    return (getViewportSize().width < 640) ? 6 : 10;
+    return (getViewportSize().width < 680) ? 6 : 10;
   },
 
   _handleResize() {

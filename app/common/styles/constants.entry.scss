@@ -8,4 +8,6 @@ $colors-background: rgba(247, 247, 247, 1);
 
 $defaultCurve: cubic-bezier(0.25, 0.1, 0.25, 1);
 
-$mobileBreakpoint: "screen and (max-width: 720px)";
+$contentWidth: 680px;
+$contentGutters: 40px;
+$mobileBreakpoint: "screen and (max-width: 680px)";

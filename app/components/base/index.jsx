@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const navigationInactivePx = 0;
 const navigationActivePx = 180;
-const mobileBreakpoint = 720;
+const mobileBreakpoint = 680;
 const mobileBreakpointNav = 1200;
 
 const base = React.createClass({
