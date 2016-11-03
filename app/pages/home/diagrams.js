@@ -33,6 +33,7 @@ export const diagramFour = {
   sizing: [],
   data: [
     [<a href="https://www.twitter.com/meanjim">Twitter - @meanjim</a>],
-    ['request [at] jimmyl.ee']
+    ['request [at] jimmyl.ee'],
+    [`© Jimmy Lee ${currentYear}`]
   ]
 };

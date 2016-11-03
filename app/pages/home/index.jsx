@@ -18,11 +18,7 @@ const pageHome = React.createClass({
         </Header>
 
         <p>
-          It is hard to keep track of experiments and over the years I’ve thrown away many lines of code and lost useful notes. So this project is an opportunity to keep a living version of everything, as well as celebrate what is important to me: the craft of creating websites.
-        </p>
-
-        <p>
-          So hello and nice to meet you! I'm Jim, an engineer who builds stuff for the web.
+          I am an engineer based in San Francisco that loves building single page web applications and websites. I created this project to showcase some of that love and keep track of my radical web safari learnings. I hope I am useful to whatever journey you're on!
         </p>
 
         <Footer>

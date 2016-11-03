@@ -16,7 +16,7 @@ export const navigationItems = [
   (n => {
     const url = baseRoute;
     const title = 'Foreword';
-    const description = 'This is a web application for sharing experiments and research.';
+    const description = 'This is a collection of my experiments and research.';
     const component = decorateComponentWithProps(pageHome, { description });
 
     return { component, description, title, url };
@@ -24,7 +24,7 @@ export const navigationItems = [
   (n => {
     const url = '/site-analysis';
     const title = 'Site Analysis';
-    const description = <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>.</span>;
+    const description = <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary.</span>;
     const component = decorateComponentWithProps(pageStats, { description });
 
     return { component, description, title, url };
