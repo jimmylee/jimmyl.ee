@@ -32,7 +32,7 @@
 
   &-item {
     @include typography-regular();
-    @include typescale-smallest();
+    @include typescale-tiny();
     text-align: left;
     display: flex;
     justify-content: space-between;
