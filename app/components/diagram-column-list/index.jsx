@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React from 'react';
 import { getViewportSize } from '../../common/window';
 
@@ -46,8 +47,14 @@ export default React.createClass({
           columnStyles.maxWidth = widthMap[columnIndex];
         }
 
+        const classes = classnames('diagram-column-list-text', {
+          'diagram-column-list-text--bold': each.length > 1 && columnIndex === 0,
+          'diagram-column-list-text--extendedPadding': columnIndex === 1,
+          'diagram-column-list-text--last': columnIndex === each.length - 1,
+        });
+
         return (
-          <span className="diagram-column-list-text"
+          <span className={classes}
             key={column}
             style={columnStyles}>
             {column}

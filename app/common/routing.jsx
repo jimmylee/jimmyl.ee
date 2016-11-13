@@ -32,7 +32,7 @@ export const navigationItems = [
   (n => {
     const url = '/animation-performance';
     const title = 'Performant CSS Animations';
-    const description = 'CSS animation performance in the browser.';
+    const description = 'Understanding CSS animation performance in the browser.';
     const component = decorateComponentWithProps(pageCSSAnimations, { description });
 
     return { component, description, title, url };

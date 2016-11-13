@@ -23,6 +23,7 @@ html {
 
 body {
   color: $colors-black;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -52,7 +53,7 @@ a {
 
 p {
   @include typescale-normal();
-  line-height: 1.6em;
+  line-height: 1.8em;
   margin-top: 16px;
 }
 
@@ -63,10 +64,11 @@ h1 {
 }
 
 h2 {
-  @include typescale-medium();
+  @include typescale-large();
   line-height: 1.3em;
   margin-top: 40px;
-  font-weight: 700;
+  font-weight: 500;
+  margin-bottom: 32px;
 }
 
 h3 {
