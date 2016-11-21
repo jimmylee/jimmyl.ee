@@ -76,16 +76,6 @@ const base = React.createClass({
     return this.props.pageNavigationActive ? navigationActivePx : navigationInactivePx;
   },
 
-  _handleShowNavigation() {
-    let size = navigationActivePx;
-    if (getViewportSize().width >= mobileBreakpointNav) {
-      size = navigationInactivePx;
-    }
-
-    this.props.actions.showNavigation(true);
-    this.props.actions.updatePagePosition({ x: size });
-  },
-
   _handleHideNavigation() {
     this.props.actions.showNavigation(false);
     this.props.actions.updatePagePosition({ x: navigationInactivePx });
@@ -146,7 +136,6 @@ const base = React.createClass({
         <Navigation
           active={pageNavigationActive}
           currentPath={pathname}
-          hideNavigation={this._handleHideNavigation}
           links={navigationItems}
           showNavigation={this._handleShowNavigation}
         />

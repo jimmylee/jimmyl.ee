@@ -10,9 +10,10 @@ registerLanguage('scss', scss);
 
 const syntaxHighlighterStyles = {
   backgroundColor: 'transparent',
+  borderRadius: '3px',
   boxShadow: 'inset 0 0 0 1px rgba(238, 238, 238, 1)',
   fontSize: '0.8em',
-  margin: '24px 0 24px 0',
+  margin: '40px 0 40px 0',
   padding: '16px'
 };
 

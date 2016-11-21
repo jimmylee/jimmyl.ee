@@ -76,5 +76,9 @@ h3 {
 }
 
 h4 {
-  @include typescale-medium();
+  line-height: 1.3em;
+  margin-top: 40px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  @include typescale-normal();
 }

@@ -56,7 +56,7 @@ const pageCSSAnimations = React.createClass({
           Unfortunately, the time cost is unavoidable when the page first loads, so we can infer to avoid this process for our animations if possible. Also, the rest of these notes work under the assumption that loading bitmaps into memory are expensive but going deep on that topic is another set of notes (schedulers, commits, and low-level programming specifics).
         </p>
 
-        <h2>Dive into compositing</h2>
+        <h4>Dive Into Compositing</h4>
 
         <p>
           Compositing is the process of using buffers to cache and associate graphic layers of the render layer tree. Once the bitmaps exist in memory, the compositor thread draws all of the graphic layers into a final screen image.
@@ -74,7 +74,7 @@ const pageCSSAnimations = React.createClass({
           Because of compositing, the user can see immediate visual changes during a scroll event. This capability is made possible by the existence of two separate trees.
         </p>
 
-        <h2>Two trees to make it work</h2>
+        <h4>Two Trees</h4>
 
         <p>
           As discussed before, the main thread produces the render tree, and each of its nodes is known as render objects. Render objects possess data on which elements overlap each other, and is used to create a tree of render layers. After creating the render layer tree, the compositor thread executes instructions for producing another tree with graphic layers. This tree takes up memory on the GPU and is stored separately from the render layers.
@@ -88,7 +88,7 @@ const pageCSSAnimations = React.createClass({
           Each render layer has its graphics layer or uses one of its ancestors. So the relationship of graphic layers to render layers are one-to-many, and there will always be one (for the document root node). More importantly, invalidating one of these layers only results in either repainting or compositing that layer alone.
         </p>
 
-        <h2>Our eureka moment</h2>
+        <h4>Our Eureka Moment</h4>
 
         <p>
           TL, DR; We unearthed some strategies for improving animation performance.
@@ -106,13 +106,13 @@ const pageCSSAnimations = React.createClass({
           Third, depending on the devices of your target audience, focusing on writing code that changes only the composited layers can improve performance if there is no shortage of memory. This knowledge is responsible for the cannibalized "use hardware acceleration" strategy seen all over the internet.
         </p>
 
-        <h2>Example cases</h2>
+        <h4>Examples</h4>
 
         <p>
           I have provided two cases. Both cases assume that all the bitmaps have undergone their first paint, the DOM tree has been parsed to produce the render tree and the compositing of the graphic layer tree.
         </p>
 
-        <h2>Changing an element's height</h2>
+        <h4>Changing CSS Height</h4>
 
         <p>
           Height is a common type of style property to animate. Sometimes you will need to animate an expanding menu or subpage. Let's have a look at what the work entails here:
@@ -124,7 +124,7 @@ const pageCSSAnimations = React.createClass({
           The main thread gets frequently locked to execute calls from the render object changing. For each render object change, the main thread runs operations for layout and paint, producing a new render layer tree. Then the compositor will take the render layer tree and create a graphic layer tree before compositing can finally occur. As an aside, height can also affect an element's siblings and children, which can cause subsequent render object changes too.
         </p>
 
-        <h2>Changing an element's CSS transform</h2>
+        <h4>Changing CSS Transform</h4>
 
         <p>
           Here is an example of when we animate the CSS property transform by changing translateY:
@@ -136,7 +136,7 @@ const pageCSSAnimations = React.createClass({
           There is an absence of red here! Because we altered a property that does not modify the render object and it only invalidates a graphic layer, the main thread does not have to perform a layout or paint operation. Also, the main thread can execute other instructions.
         </p>
 
-        <h2>Getting into the code</h2>
+        <h4>Into The Code</h4>
 
         <p>
           Here is a CSS animation. It is not bad! This CSS excerpt forces the browser to create a composited layer for an element when the page loads. When a user hovers, the browser does not have to perform a layout or paint operation and can animate the change in transform smoothly.
@@ -157,11 +157,9 @@ const pageCSSAnimations = React.createClass({
           To understand the choices, let's get into some of the tactics for writing CSS animations.
         </p>
 
-        <h2>
-          Tactic: avoiding unnecessary paint and layout operations
-        </h2>
-
-        <StatsTable data={supportTableOne}/>
+        <h4>
+          Avoid Paint and Layout
+        </h4>
 
         <p>
           We know paint and layout are expensive and updating CSS transform properties will not cause those operations.
@@ -242,13 +240,15 @@ text-decoration
 visibility`}
 </Code>
 
-        <h2>Tactic: preparing elements for animations in advance</h2>
+        <StatsTable data={supportTableOne}/>
 
-        <StatsTable data={supportTableTwo} />
+        <h4>Prepare In Advance</h4>
 
         <p>
           If there is no need to be frugal with memory, adding the CSS transform property to your CSSOM will initialize qualifying render layer with a backing surface (compositing layer), making those elements easier to animate.
         </p>
+
+        <StatsTable data={supportTableTwo} />
 
         <p>
           Here are some typical examples of the syntax used:
@@ -282,9 +282,7 @@ will-change: left, top;`}
           The only problem with this option is browser support.
         </p>
 
-        <h2>Tactic: only apply composite layers before the user interacts</h2>
-
-        <StatsTable data={supportTableFour} />
+        <h4>Wait For User Interaction</h4>
 
         <p>
           I have created websites that have a lot of DOM elements possessing compositing layers. Sometimes the maximum amount of memory consumed is surpassed, and the page is forced to close. An example of this is a news feed with many social interactions and nested comments.
@@ -309,6 +307,8 @@ el.addEventListener('mouseenter', prepare);
 el.addEventListener('animationEnd', cleanup);`}
 </Code>
 
+        <StatsTable data={supportTableFour} />
+
         <p>
           You can also use transform instead of "will-change" if you need to support Microsoft Edge browser.
         </p>
@@ -328,9 +328,7 @@ el.addEventListener('mouseenter', prepare);
 el.addEventListener('animationEnd', cleanup);`}
 </Code>
 
-        <h2>Tactic: taking advantage of the human eye.</h2>
-
-        <StatsTable data={supportTableFive}/>
+        <h4>The Human Eye</h4>
 
         <p>
           Human research tells us that there is a 100-millisecond window before the user notices anything. If you trigger an animation within 100-milliseconds, you can still create the feeling on an immediate response.
@@ -371,7 +369,9 @@ el.addEventListener('animationEnd', cleanup);`}
           You can use JavaScript to add and remove the .is-visible class.
         </p>
 
-        <h2>That's it</h2>
+        <StatsTable data={supportTableFive}/>
+
+        <h4>Conclusion</h4>
 
         <p>
           Now you are equipped with everything you need to improve your CSS animations. If you are exploring imperative animations (JavaScript), you should also check out requestAnimationFrame which is a useful alternative to setTimeout and setInterval.

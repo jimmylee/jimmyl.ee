@@ -40,10 +40,15 @@ export default React.createClass({
 
     return (
       <div className={itemClasses}>
-        <figure className="navigationItem-left"
-         children={listNumber} />
-        <div className={rightClasses}
-          onClick={this._handleClick}>
+        <figure
+          className="navigationItem-left"
+          children={listNumber}
+          onClick={this._handleClick}
+        />
+        <div
+          className={rightClasses}
+          onClick={this._handleClick}
+        >
           <div className="navigationItem-title" children={title} />
           <div className="navigationItem-description">
             {description}

@@ -6,90 +6,7 @@ export default React.createClass({
   propTypes: {
     active: React.PropTypes.bool,
     currentPath: React.PropTypes.string,
-    links: React.PropTypes.array,
-    showNavigation: React.PropTypes.func,
-    hideNavigation: React.PropTypes.func
-  },
-
-  componentWillMount() {
-    window.addEventListener('click', this._handleOutsideClick);
-    window.addEventListener('touchstart', this._handleOutsideClick);
-    window.addEventListener('scroll', this._handleScroll);
-
-    this._hideTimeout;
-  },
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this._handleOutsideClick);
-    window.removeEventListener('touchstart', this._handleOutsideClick);
-    window.removeEventListener('scroll', this._handleScroll);
-  },
-
-  _handleScroll() {
-    if (!this.props.active) {
-      return false;
-    }
-
-    if (this._hideTimeout) {
-      window.clearTimeout(this._hideTimeout);
-    }
-
-    this._hideTimeout = window.setTimeout(() => {
-      this.props.hideNavigation();
-    }, 400);
-  },
-
-  _handleMouseLeave() {
-    if (!this.props.active) {
-      return false;
-    }
-
-    if (this._hideTimeout) {
-      window.clearTimeout(this._hideTimeout);
-    }
-
-    this._hideTimeout = window.setTimeout(() => {
-      this.props.hideNavigation();
-    }, 400);
-  },
-
-  _handleOutsideClick({ target }) {
-    if (!this.props.active) {
-      return false;
-    }
-
-    if (this._hideTimeout) {
-      window.clearTimeout(this._hideTimeout);
-    }
-
-    const el = ReactDOM.findDOMNode(this.refs.nav);
-    if (el && !el.contains(target)) {
-      this.props.hideNavigation();
-    }
-  },
-
-  _handleMouseMove() {
-    if (this.props.active) {
-      return;
-    }
-
-    if (this._hideTimeout) {
-      window.clearTimeout(this._hideTimeout);
-    }
-
-    this.props.showNavigation();
-  },
-
-  _handleTouchStart() {
-    if (this.props.active) {
-      return;
-    }
-
-    if (this._hideTimeout) {
-      window.clearTimeout(this._hideTimeout);
-    }
-
-    this.props.showNavigation();
+    links: React.PropTypes.array
   },
 
   render() {
@@ -114,15 +31,6 @@ export default React.createClass({
       );
     });
 
-    return (
-      <nav
-        children={elements}
-        className="navigation"
-        onTouchStart={this._handleTouchStart}
-        onMouseMove={this._handleMouseMove}
-        onMouseLeave={this._handleMouseLeave}
-        ref="nav"
-      />
-    );
+    return <nav children={elements} className="navigation" ref="nav" />;
   }
 });
