@@ -47,6 +47,7 @@ const base = React.createClass({
     }
 
     window.addEventListener('resize', this._handleResize);
+    window.addEventListener('scroll', this._handleScroll);
     window.addEventListener('page-enter', this._handlePageEnter);
 
     this._startTimeout = null;
@@ -57,6 +58,7 @@ const base = React.createClass({
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleResize);
+    window.removeEventListener('scroll', this._handleScroll);
     window.removeEventListener('page-enter', this._handlePageEnter);
   },
 
@@ -117,7 +119,12 @@ const base = React.createClass({
     }, 600);
   },
 
+  _handleScroll() {
+    this.props.actions.updateNavHover(null);
+  },
+
   _handleResize() {
+    this.props.actions.updateNavHover(null);
     this.props.actions.updatePagePosition({
       y: this._getTranslateY(),
       x: this._getTranslateX()

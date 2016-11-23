@@ -33,7 +33,7 @@
     opacity: 0;
   }
 
-  &:hover {
+  &--hovered {
     .navigationItem-left {
       background-color: lighten($colors-border, 8%);
     }

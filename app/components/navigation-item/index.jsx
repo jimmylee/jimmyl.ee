@@ -2,7 +2,23 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router';
 
-export default React.createClass({
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions/index';
+
+const mapStateToProps = (state) => {
+  return {
+    selectedIndex: state.rootReducer.userNavHoverIndex
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return Object.assign({}, {
+    actions: bindActionCreators(actions, dispatch)
+  });
+};
+
+const navItem = React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
@@ -21,8 +37,16 @@ export default React.createClass({
     this.context.router.push(this.props.url);
   },
 
+  _handleMouseMove: function() {
+    if (this.props.index === this.props.selectedIndex) {
+      return;
+    }
+
+    this.props.actions.updateNavHover(this.props.index);
+  },
+
   render() {
-    const { active, currentPath, description, index, url, title } = this.props;
+    const { active, currentPath, description, index, selectedIndex, url, title } = this.props;
 
     let listNumber = index + 1;
     if (listNumber < 10) {
@@ -35,19 +59,20 @@ export default React.createClass({
     });
 
     const itemClasses = classnames('navigationItem', {
-      'navigationItem--chosen': currentPath === url
+      'navigationItem--chosen': currentPath === url,
+      'navigationItem--hovered': index === selectedIndex
     });
 
     return (
-      <div className={itemClasses}>
+      <div className={itemClasses}
+        onMouseMove={this._handleMouseMove}
+        onClick={this._handleClick}>
         <figure
           className="navigationItem-left"
           children={listNumber}
-          onClick={this._handleClick}
         />
         <div
           className={rightClasses}
-          onClick={this._handleClick}
         >
           <div className="navigationItem-title" children={title} />
           <div className="navigationItem-description">
@@ -58,3 +83,8 @@ export default React.createClass({
     );
   }
 });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(navItem);

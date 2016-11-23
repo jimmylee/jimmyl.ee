@@ -3,7 +3,8 @@ const initialState = {
   pageX: 0,
   pageY: 0,
   pageOpacity: 1,
-  statsLoadTime: 0
+  statsLoadTime: 0,
+  userNavHoverIndex: null
 };
 
 function merge(state, updates) {
@@ -22,6 +23,10 @@ export function updatePagePosition(updates, state) {
   return merge(state, updates);
 }
 
+export function updateNavHoverIndex(userNavHoverIndex, state) {
+  return merge(state, { userNavHoverIndex });
+}
+
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SHOW_NAVIGATION':
@@ -30,6 +35,8 @@ export function rootReducer(state = initialState, action) {
       return saveLoadTime(action.time, state);
     case 'UPDATE_PAGE_POSITION':
       return updatePagePosition(action.updates, state);
+    case 'UPDATE_NAV_HOVER':
+      return updateNavHoverIndex(action.index, state);
     default:
       return state;
   }

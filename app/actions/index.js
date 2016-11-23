@@ -35,5 +35,12 @@ export function updatePagePosition({ x, y, z, alpha }) {
   return {
     updates,
     type: 'UPDATE_PAGE_POSITION'
-  }
+  };
 };
+
+export function updateNavHover(index) {
+  return {
+    index,
+    type: 'UPDATE_NAV_HOVER'
+  };
+}
