@@ -2,10 +2,7 @@ import React from 'react';
 import Navigation from '../navigation/index.jsx';
 import { navigationItems } from '../../common/routing';
 import { getViewportSize } from '../../common/window';
-
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/index';
+import { bindState } from '../../common/dispatch';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,20 +10,10 @@ const mapStateToProps = (state) => {
     pageX: state.rootReducer.pageX,
     pageY: state.rootReducer.pageY,
     pageOpacity: state.rootReducer.pageOpacity,
-    pathname: state.route.location.pathname
+    pathname: state.route.location.pathname,
+    selectedIndex: state.rootReducer.userNavHoverIndex
   };
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return Object.assign({}, {
-    actions: bindActionCreators(actions, dispatch)
-  });
-};
-
-const navigationInactivePx = 0;
-const navigationActivePx = 180;
-const mobileBreakpoint = 680;
-const mobileBreakpointNav = 1200;
 
 const base = React.createClass({
   propTypes: {
@@ -53,7 +40,7 @@ const base = React.createClass({
     this._startTimeout = null;
     this._endTimeout = null;
 
-    this.props.actions.updatePagePosition({ y: this._getTranslateY(), x: navigationInactivePx });
+    this.props.actions.updatePagePosition({ y: this._getTranslateY() });
   },
 
   componentWillUnmount() {
@@ -64,23 +51,10 @@ const base = React.createClass({
 
   _getTranslateY() {
     let modifier = 0.12;
-    if (getViewportSize().width <= mobileBreakpoint) {
+    if (getViewportSize().width <= 680) {
       modifier = 0.07;
     }
     return getViewportSize().height * modifier;
-  },
-
-  _getTranslateX() {
-    if (getViewportSize().width >= mobileBreakpointNav) {
-      return navigationInactivePx;
-    }
-
-    return this.props.pageNavigationActive ? navigationActivePx : navigationInactivePx;
-  },
-
-  _handleHideNavigation() {
-    this.props.actions.showNavigation(false);
-    this.props.actions.updatePagePosition({ x: navigationInactivePx });
   },
 
   _handlePageEnter(e) {
@@ -120,15 +94,17 @@ const base = React.createClass({
   },
 
   _handleScroll() {
-    this.props.actions.updateNavHover(null);
+    if (this.props.selectedIndex) {
+      this.props.actions.updateNavHover(null);
+    }
   },
 
   _handleResize() {
-    this.props.actions.updateNavHover(null);
-    this.props.actions.updatePagePosition({
-      y: this._getTranslateY(),
-      x: this._getTranslateX()
-    });
+    if (this.props.selectedIndex) {
+      this.props.actions.updateNavHover(null);
+    }
+
+    this.props.actions.updatePagePosition({ y: this._getTranslateY() });
   },
 
   render() {
@@ -152,7 +128,4 @@ const base = React.createClass({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(base);
+export default bindState(mapStateToProps)(base);

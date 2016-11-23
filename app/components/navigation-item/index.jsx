@@ -67,18 +67,13 @@ const navItem = React.createClass({
       <div className={itemClasses}
         onMouseMove={this._handleMouseMove}
         onClick={this._handleClick}>
-        <figure
-          className="navigationItem-left"
-          children={listNumber}
-        />
-        <div
-          className={rightClasses}
-        >
+        <figure className="navigationItem-left" children={listNumber}/>
+        {currentPath !== url ? <div className={rightClasses}>
           <div className="navigationItem-title" children={title} />
           <div className="navigationItem-description">
             {description}
           </div>
-        </div>
+        </div> : null }
       </div>
     );
   }
