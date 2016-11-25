@@ -24,5 +24,6 @@ export const dispatchEnterEvent = (nextState, replace, callback) => {
 
   const detail = { nextState, replace, callback };
   const event = new CustomEvent('page-enter', { detail });
+  document.body.scrollTop = 0;
   window.dispatchEvent(event);
 };
