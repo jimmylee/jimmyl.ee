@@ -1,0 +1,214 @@
+$cubeSize: 40px;
+$cubeTransform: $cubeSize * 0.5;
+
+.cube {
+  box-sizing: border-box;
+  perspective: 1000px;
+  width: $cubeSize;
+  height: $cubeSize;
+  position: relative;
+
+  &-container {
+    box-sizing: border-box;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transform: translate3D(0, 0, -$cubeTransform);
+    width: 100%;
+    height: 100%;
+  }
+
+  &-side {
+    backface-visibility: hidden;
+    pointer-events: none;
+    background-color: #FDFDFD;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    transition: 770ms $defaultCurve all;
+    transition-property: background-color, transform;
+
+    &:nth-of-type(odd){
+      box-shadow: inset 0 0 0 1px $colors-border;
+    }
+
+    &:nth-of-type(even){
+      box-shadow: inset 0 0 0 1px $colors-border;
+    }
+
+    &-content {
+      @include text-subtitle();
+      height: $cubeSize;
+      width: $cubeSize;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &-emoji {
+    font-size: 1.5em;
+    display: inline;
+    vertical-align: middle;
+    line-height: 1;
+    text-align: center;
+    padding-left: 1px;
+    box-sizing: border-box;
+    letter-spacing: normal;
+    font-weight: normal;
+    text-transform: none;
+  }
+
+  &--hovered {
+    // Placeholder
+  }
+
+  &--selected {
+    .cube-side {
+      background-color: $colors-accent;
+      box-shadow: none !important;
+
+      &:nth-of-type(1){
+        transform: rotateX(270deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(2){
+        transform: rotateX(180deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(3){
+        transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(4){
+        transform: rotateX(0deg) translate3D(0, 0, $cubeTransform);
+      }
+    }
+  }
+
+  &:not(.cube--selected) {
+    .cube-side {
+      &:nth-of-type(1){
+        transform: rotateX(0deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(2){
+        transform: rotateX(-90deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(3){
+        transform: rotateX(-180deg) translate3D(0, 0, $cubeTransform);
+      }
+
+      &:nth-of-type(4){
+        transform: rotateX(-270deg) translate3D(0, 0, $cubeTransform);
+      }
+    }
+
+    &.cube {
+      &--rotateOnce {
+        &.cube--hovered {
+          .cube-side:nth-of-type(1){
+            transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(2){
+            transform: rotateX(0) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(3){
+            transform: rotateX(-90deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(4){
+            transform: rotateX(-180deg) translate3D(0, 0, $cubeTransform);
+          }
+        }
+      }
+
+      &--rotateTwice {
+        &.cube--hovered {
+          .cube-side:nth-of-type(1){
+            transform: rotateX(180deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(2){
+            transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(3){
+            transform: rotateX(0deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(4){
+            transform: rotateX(-90deg) translate3D(0, 0, $cubeTransform);
+          }
+        }
+      }
+
+      &--rotateThrice {
+        &.cube--hovered {
+          .cube-side:nth-of-type(1){
+            transform: rotateX(180deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(2){
+            transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(3){
+            transform: rotateX(0deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(4){
+            transform: rotateX(-90deg) translate3D(0, 0, $cubeTransform);
+          }
+        }
+      }
+
+      &--rotateEach {
+        &.cube--hovered {
+          .cube-side:nth-of-type(1){
+            transform: rotateX(270deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(2){
+            transform: rotateX(180deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(3){
+            transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(4){
+            transform: rotateX(0deg) translate3D(0, 0, $cubeTransform);
+          }
+        }
+      }
+
+      &--rotateFull {
+        &.cube--hovered {
+          .cube-side:nth-of-type(1){
+            transform: rotateX(360deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(2){
+            transform: rotateX(270deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(3){
+            transform: rotateX(180deg) translate3D(0, 0, $cubeTransform);
+          }
+
+          .cube-side:nth-of-type(4){
+            transform: rotateX(90deg) translate3D(0, 0, $cubeTransform);
+          }
+        }
+      }
+    }
+  }
+}

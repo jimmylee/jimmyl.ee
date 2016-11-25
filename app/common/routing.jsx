@@ -16,34 +16,38 @@ export const navigationItems = [
   (n => {
     const url = baseRoute;
     const title = 'Foreword';
+    const emojis = ['🙂', '🙃', '😉'];
     const description = 'This is a collection of my experiments and research.';
     const component = decorateComponentWithProps(pageHome, { description });
 
-    return { component, description, title, url };
+    return { component, description, emojis, title, url };
   })(),
   (n => {
     const url = '/site-analysis';
     const title = 'Site Analysis';
+    const emojis = ['🚶', '🏃', '⛹'];
     const description = <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary.</span>;
     const component = decorateComponentWithProps(pageStats, { description });
 
-    return { component, description, title, url };
+    return { component, description, emojis, title, url };
   })(),
   (n => {
     const url = '/animation-performance';
     const title = 'Performant CSS Animations';
+    const emojis = ['🐬', '🐳', '🐋'];
     const description = 'Understanding CSS animation performance in the browser.';
     const component = decorateComponentWithProps(pageCSSAnimations, { description });
 
-    return { component, description, title, url };
+    return { component, description, emojis, title, url };
   })(),
   (n => {
     const url = '/writing-css';
     const title = 'Performant CSS';
+    const emojis = ['🌱', '🌿', '🌾'];
     const description = 'Writing performant CSS object model creation for your web application.';
     const component = decorateComponentWithProps(pageWritingCSS, { description });
 
-    return { component, description, title, url };
+    return { component, description, emojis, title, url };
   })(),
   (n => {
     const url = '*';

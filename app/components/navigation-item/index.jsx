@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router';
+import Cube from '../cube/index';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,7 +26,6 @@ const navItem = React.createClass({
 
   propTypes: {
     actions: React.PropTypes.object,
-    active: React.PropTypes.bool,
     currentPath: React.PropTypes.string,
     description: React.PropTypes.node,
     index: React.PropTypes.number,
@@ -46,29 +46,29 @@ const navItem = React.createClass({
   },
 
   render() {
-    const { active, currentPath, description, index, selectedIndex, url, title } = this.props;
+    const { currentPath, description, emojis, index, selectedIndex, url, title } = this.props;
 
     let listNumber = index + 1;
     if (listNumber < 10) {
       listNumber = `0${listNumber}`
     }
 
-    const rightClasses = classnames('navigationItem-right', {
-      'navigationItem-right--visible': active,
-      'navigationItem-right--chosen': currentPath === url
-    });
-
+    const selected = currentPath === url;
+    const hovered = index === selectedIndex;
+    const listElement = (
+      <Cube
+        emojis={emojis} hovered={hovered} selected={selected} value={listNumber} />
+    );
     const itemClasses = classnames('navigationItem', {
-      'navigationItem--chosen': currentPath === url,
-      'navigationItem--hovered': index === selectedIndex
+      'navigationItem--hovered': hovered
     });
 
     return (
       <div className={itemClasses}
         onMouseMove={this._handleMouseMove}
         onClick={this._handleClick}>
-        <figure className="navigationItem-left" children={listNumber}/>
-        {currentPath !== url ? <div className={rightClasses}>
+        <figure className="navigationItem-left" children={listElement} />
+        {!selected ? <div className="navigationItem-right">
           <div className="navigationItem-title" children={title} />
           <div className="navigationItem-description">
             {description}

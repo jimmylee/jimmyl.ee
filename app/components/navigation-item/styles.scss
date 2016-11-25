@@ -4,9 +4,6 @@
   cursor: pointer;
 
   &-left {
-    @include text-subtitle();
-    display: block;
-    padding: 16px;
     margin: 0 16px 16px 0;
     flex-shrink: 0;
   }
@@ -17,7 +14,7 @@
     top: 48px;
     left: -8px;
     background-color: $colors-background;
-    padding: 16px 8px 8px 8px;
+    padding: 8px;
     width: 180px;
     z-index: 10;
     text-decoration: none;
@@ -34,28 +31,10 @@
   }
 
   &--hovered {
-    .navigationItem-left {
-      background-color: lighten($colors-border, 8%);
-    }
-
     .navigationItem-right {
       transform: translate3d(0, 0, 0);
       opacity: 1;
       visibility: visible;
-    }
-  }
-
-  &--chosen {
-    .navigationItem-title,
-    .navigationItem-left {
-      background: $colors-accent;
-    }
-
-    &:hover {
-      .navigationItem-left,
-      .navigationItem-title {
-        background: $colors-accent;
-      }
     }
   }
 

@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const navigation = React.createClass({
   propTypes: {
-    active: React.PropTypes.bool,
     currentPath: React.PropTypes.string,
     links: React.PropTypes.array
   },
@@ -30,19 +29,19 @@ const navigation = React.createClass({
   },
 
   render() {
-    const { active, currentPath, links } = this.props;
+    const { currentPath, links } = this.props;
 
     const elements = links.map((each, i) => {
-      const { url, title, description, hide } = each;
+      const { description, hide, emojis, title, url } = each;
       if (hide) {
         return;
       }
 
       return (
         <Item
-          active={active}
           currentPath={currentPath}
           description={description}
+          emojis={emojis}
           index={i}
           key={i}
           title={title}
