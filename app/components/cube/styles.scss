@@ -18,23 +18,24 @@ $cubeTransform: $cubeSize * 0.5;
   }
 
   &-side {
+    @include ux-disable-text-highlight();
     backface-visibility: hidden;
     pointer-events: none;
-    background-color: #FDFDFD;
+    background-color: rgba(253, 253, 253, 0.7);
     box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
     display: block;
     transition: 770ms $defaultCurve all;
-    transition-property: background-color, transform;
+    transition-property: background-color, transform, box-shadow;
 
     &:nth-of-type(odd){
-      box-shadow: inset 0 0 0 1px $colors-border;
+      box-shadow: inset 0 0 8px 1px rgba(240, 240, 240, 0.7);
     }
 
     &:nth-of-type(even){
-      box-shadow: inset 0 0 0 1px $colors-border;
+      box-shadow: inset 0 0 8px 1px rgba(240, 240, 240, 0.7);
     }
 
     &-content {
@@ -70,7 +71,7 @@ $cubeTransform: $cubeSize * 0.5;
   &--selected {
     .cube-side {
       background-color: $colors-accent;
-      box-shadow: none !important;
+      box-shadow: inset 0 0 8px 1px darken($colors-accent, 20%) !important;
 
       &:nth-of-type(1){
         transform: rotateX(270deg) translate3D(0, 0, $cubeTransform);

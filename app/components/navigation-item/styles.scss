@@ -4,6 +4,7 @@
   cursor: pointer;
 
   &-left {
+    @include ux-disable-text-highlight();
     margin: 0 16px 16px 0;
     flex-shrink: 0;
   }
