@@ -9,7 +9,7 @@
     position: relative;
     margin: auto;
     box-sizing: border-box;
-    padding: 0 $contentGutters 128px $contentGutters;
+    padding: 0 20px 128px 20px;
     width: 100%;
     max-width: $contentWidth;
     transition: 280ms $defaultCurve all;
@@ -20,7 +20,7 @@
       width: auto;
       max-width: none;
       padding: 0;
-      margin: 0 $contentGutters 128px $contentGutters;
+      margin: 0 20px 128px 20px;
     }
   }
 }
