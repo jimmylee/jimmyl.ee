@@ -26,7 +26,9 @@ export const navigationItems = [
     const url = '/site-analysis';
     const title = 'Site Analysis';
     const emojis = ['🚶', '🏃', '⛹'];
-    const description = <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary.</span>;
+    const description = (
+      <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary.</span>
+    );
     const component = decorateComponentWithProps(pageStats, { description });
 
     return { component, description, emojis, title, url };
@@ -35,7 +37,7 @@ export const navigationItems = [
     const url = '/animation-performance';
     const title = 'Performant CSS Animations';
     const emojis = ['🐬', '🐳', '🐋'];
-    const description = 'Understanding CSS animation performance in the browser.';
+    const description = 'My understanding of CSS animation performance in the browser.';
     const component = decorateComponentWithProps(pageCSSAnimations, { description });
 
     return { component, description, emojis, title, url };
@@ -44,7 +46,7 @@ export const navigationItems = [
     const url = '/writing-css';
     const title = 'Performant CSS';
     const emojis = ['🌱', '🌿', '🌾'];
-    const description = 'Writing performant CSS object model creation for your web application.';
+    const description = 'A set of tactics to ensure fast CSS Object Model creation.';
     const component = decorateComponentWithProps(pageWritingCSS, { description });
 
     return { component, description, emojis, title, url };
