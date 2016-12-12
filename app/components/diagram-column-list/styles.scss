@@ -24,6 +24,10 @@
       padding-right: 24px;
     }
 
+    &--same {
+      visibility: hidden;
+    }
+
     &--last {
       padding-right: 0px;
       box-sizing: border-box;
@@ -44,6 +48,10 @@
 
     a {
       text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

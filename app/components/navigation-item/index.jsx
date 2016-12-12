@@ -56,8 +56,11 @@ const navItem = React.createClass({
     const selected = currentPath === url;
     const hovered = index === selectedIndex;
     const listElement = (
-      <Cube
-        emojis={emojis} hovered={hovered} selected={selected} value={listNumber} />
+      <Cube emojis={emojis}
+        hovered={hovered}
+        onClick={this._handleClick}
+        selected={selected}
+        value={listNumber} />
     );
     const itemClasses = classnames('navigationItem', {
       'navigationItem--hovered': hovered
@@ -65,15 +68,20 @@ const navItem = React.createClass({
 
     return (
       <div className={itemClasses}
-        onMouseMove={this._handleMouseMove}
-        onClick={this._handleClick}>
-        <figure className="navigationItem-left" children={listElement} />
-        {!selected ? <div className="navigationItem-right">
-          <div className="navigationItem-title" children={title} />
-          <div className="navigationItem-description">
-            {description}
+        onMouseMove={this._handleMouseMove}>
+        <figure
+          children={listElement}
+          className="navigationItem-left"
+          onClick={this._handleClick} />
+        {!selected ? (
+          <div className="navigationItem-right"
+            onClick={this._handleClick}>
+            <div className="navigationItem-title" children={title} />
+            <div className="navigationItem-description">
+              {description}
+            </div>
           </div>
-        </div> : null }
+        ) : null }
       </div>
     );
   }

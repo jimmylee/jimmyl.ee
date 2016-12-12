@@ -4,7 +4,7 @@ export const diagramTwo = {};
 
 export const diagramThree = {
   title: 'Bundle Dependencies',
-  sizing: [`******`],
+  sizing: [`********`],
   data: [
     ['0.14.7', 'react'],
     ['0.14.7', 'react-dom'],

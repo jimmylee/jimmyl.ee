@@ -1,6 +1,6 @@
 export const diagramSources = {
   title: 'Sources',
-  sizing: [`****`, `**************`],
+  sizing: [`*********`, `*********`],
   data: [
     ['2011', 'Nicole Sullivan', 'http://calendar.perfplanet.com/2011/css-selector-performance-has-changed-for-the-better/'],
     ['2012', ' Juriy Zaytsev', 'http://perfectionkills.com/profiling-css-for-fun-and-profit-optimization-notes/'],

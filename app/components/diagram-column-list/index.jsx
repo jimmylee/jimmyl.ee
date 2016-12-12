@@ -19,7 +19,7 @@ export default React.createClass({
   },
 
   _getCharacterSize() {
-    return (getViewportSize().width < 680) ? 7 : 11;
+    return (getViewportSize().width < 680) ? 7 : 9;
   },
 
   _handleResize() {
@@ -40,6 +40,7 @@ export default React.createClass({
       widthMap[index] = `${each.length * characterSize}px`;
     });
 
+    let lastColumn = null;
     const listElements = data.data.map((each, index) => {
       const columns = each.map((column, columnIndex) => {
         let columnStyles = {};
@@ -47,11 +48,30 @@ export default React.createClass({
           columnStyles.maxWidth = widthMap[columnIndex];
         }
 
+        let same = false;
+        if (columnIndex === 0) {
+          same = (column === lastColumn);
+          lastColumn = column;
+        }
+
+        const last = columnIndex === each.length - 1;
         const classes = classnames('diagram-column-list-text', {
           'diagram-column-list-text--bold': each.length > 1 && columnIndex === 0,
           'diagram-column-list-text--extendedPadding': columnIndex === 1,
-          'diagram-column-list-text--last': columnIndex === each.length - 1,
+          'diagram-column-list-text--last': last,
+          'diagram-column-list-text--same': same
         });
+
+        if (last && column.startsWith && column.startsWith('http')) {
+          return (
+            <a className={classes}
+              href={column}
+              key={column}
+              style={columnStyles}>
+              {column}
+            </a>
+          );
+        }
 
         return (
           <span className={classes}
@@ -61,6 +81,7 @@ export default React.createClass({
           </span>
         );
       });
+
       return <li className="diagram-column-list-item" key={index}>{columns}</li>;
     });
 

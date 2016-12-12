@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear();
 
 export const diagramOne = {
   title: 'Live Work',
-  sizing: [`***********`, `**********`],
+  sizing: [`***********`, `*********`],
   data: [
     [`2016`, <a href="https://bold.co">Bold</a>, 'A web application for companies to share ideas and knowledge.'],
     ['2014 — 2016', <a href="https://patreon.com">Patreon</a>, 'A web application for creators to get recurring funding.'],
@@ -13,7 +13,7 @@ export const diagramOne = {
 
 export const diagramTwo = {
   title: 'In Progress',
-  sizing: [`***********`, `**********`],
+  sizing: [`***********`, `*********`],
   data: [
     [`2015 — ${currentYear}`, 'RabbitCamp', 'A strategy RPG built on my WebGL game engine.']
   ]
@@ -21,7 +21,7 @@ export const diagramTwo = {
 
 export const diagramThree = {
   title: 'Graveyard',
-  sizing: [`***********`, `**********`],
+  sizing: [`***********`, `*********`],
   data: [
     [`2012`, <a href="https://techcrunch.com/2012/11/05/jive-software-acquires-meetings-io-and-producteev-to-enhance-social-platform-with-real-time-messaging-and-task-management/">MeetingsIO</a>, 'A web application for video chat. The business was acquired.'],
     [`2011`, <a href="https://blogs.msdn.microsoft.com/xweb/2010/07/19/free-green-business-web-site-template/">Microsoft</a>, 'Five HTML 1.0 strict templates for Expression Web 4. The product was discontinued.']
