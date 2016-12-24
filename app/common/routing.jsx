@@ -17,7 +17,7 @@ export const navigationItems = [
     const url = baseRoute;
     const title = 'Foreword';
     const emojis = ['🙂', '🙃', '😉'];
-    const description = 'This is a collection of my experiments and research.';
+    const description = 'This is my internet archive of project history, research, and experiments.';
     const component = decorateComponentWithProps(pageHome, { description });
 
     return { component, description, emojis, title, url };
@@ -27,7 +27,7 @@ export const navigationItems = [
     const title = 'Site Analysis';
     const emojis = ['🚶', '🏃', '⛹'];
     const description = (
-      <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary.</span>
+      <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary if you use it.</span>
     );
     const component = decorateComponentWithProps(pageStats, { description });
 

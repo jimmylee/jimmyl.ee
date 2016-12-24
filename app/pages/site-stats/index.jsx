@@ -26,11 +26,11 @@ const pageStats = React.createClass({
       },
       {
         name: 'JavaScript',
-        data: '537kbs'
+        data: '510kbs'
       },
       {
         name: 'CSS',
-        data: '16kbs'
+        data: '21kbs'
       }
     ];
 
@@ -41,19 +41,19 @@ const pageStats = React.createClass({
         </Header>
 
         <p>
-          Historically I have held a strict no side project policy in my career. But often I wonder about the alternate universe since many choices we make on an engineering team are very contextual and provide little wiggle room. With this project, I've found an adequate method of experimenting at my convenience.
+          Historically I have held a strict no side project policy in my career. But I often wonder about the alternate universe since many choices we make on an engineering team are very contextual and are about alignment with the team. With this project, I've found an adequate method of experimenting at my convenience. Now I can live in multiple worlds with multiple methods of doing the exact same thing. It may be weird that I find that relieving.
         </p>
 
         <p>
-        For dough I picked <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="http://browserify.org/">Browserify</a> instead of <a href="https://github.com/webpack/webpack">Webpack</a>. I always use Webpack for <a href="https://github.com/facebook/react">React</a> projects so it feels nice to do things differently for fun.
+        For dough I picked <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="http://browserify.org/">Browserify</a> instead of <a href="https://github.com/webpack/webpack">Webpack</a>. I always use Webpack for <a href="https://github.com/facebook/react">React</a> projects so it feels nice to do things differently for fun. I have a feeling that the methodologies will converge and diverge for the rest of our lives. I usually crack jokes to cope with this.
         </p>
 
         <p>
-        Other view libraries worth praising: <a href="https://github.com/developit/preact">Preact</a> and <a href="https://github.com/riot/riot">RiotJS</a>. I love anyone trying to decrease the bundle size of projects.
+        Other view libraries worth praising: <a href="https://github.com/developit/preact">Preact</a> and <a href="https://github.com/riot/riot">RiotJS</a>. Prerequisites for that praise: Anyone trying to decrease the bundle size of projects. Outside of that, <a href="https://vuejs.org">Vue.js (framework)</a> and <a href="https://github.com/trueadm/inferno">Inferno (library)</a> are two new variants I discovered near the end of 2016 that also show promise. Too bad we just can't write <s>Angular</s> React.
         </p>
 
         <p>
-        All the assets are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket. They are without gzip.
+        All the assets of this website are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket. They are without gzip. I pay almost nothing to do this.
         </p>
 
         <StatsTable data={pageStats} />

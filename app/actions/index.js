@@ -13,7 +13,7 @@ export function saveLoadTime(time) {
   };
 };
 
-export function updatePagePosition({ x, y, z, alpha, animating }, state) {
+export function updatePagePosition({ x, y, z, alpha, animating }) {
   const updates = {};
 
   if (x !== null && x !== undefined) {
