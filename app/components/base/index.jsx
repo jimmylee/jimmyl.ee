@@ -68,15 +68,17 @@ const base = React.createClass({
 
     const { callback } = e.detail;
     const y = this._getTranslateY();
-    const offset = getViewportSize().height * 0.25;
+    const offset = getViewportSize().height * 0.15;
 
     this.props.actions.updatePagePosition({
+      animating: true,
       alpha: 0,
       y: y + offset
     });
 
     this._startTimeout = window.setTimeout(() => {
       this.props.actions.updatePagePosition({
+        alpha: 0,
         y: y - offset
       });
     }, 300);
@@ -84,6 +86,7 @@ const base = React.createClass({
     this._endTimeout = window.setTimeout(() => {
       callback();
       this.props.actions.updatePagePosition({
+        animating: false,
         alpha: 1,
         y
       });

@@ -8,6 +8,7 @@ import * as actions from '../../actions/index';
 
 const mapStateToProps = (state) => {
   return {
+    animating: state.rootReducer.animating,
     selectedIndex: state.rootReducer.userNavHoverIndex
   };
 };
@@ -26,6 +27,9 @@ const navigation = React.createClass({
 
   _handleMouseLeave() {
     this.props.actions.updateNavHover(null);
+    if (!this.props.animating) {
+      this.props.actions.updatePagePosition({ alpha: 1 });
+    }
   },
 
   render() {

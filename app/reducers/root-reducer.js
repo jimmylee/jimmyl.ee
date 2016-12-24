@@ -1,4 +1,5 @@
 const initialState = {
+  animating: false,
   pageNavigationActive: false,
   pageX: 0,
   pageY: 0,

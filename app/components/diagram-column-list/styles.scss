@@ -1,16 +1,16 @@
 .diagram-column-list {
-  margin-top: 40px;
+  margin-top: 48px;
 
   &-title {
-    @include typography-regular();
-    font-family: sans-serif;
-    font-weight: 600;
+    @include text-subtext();
     display: block;
-    margin: 0 0 40px 0;
+    padding: 0 0 16px 0;
+    margin: 0 0 16px 0;
+    box-shadow: 0 1px 0 0 $colors-border;
   }
 
   &-text {
-    font-family: sans-serif;
+    @include typography-ui();
     flex-shrink: 0;
     padding-right: 8px;
     width: 100%;
@@ -38,13 +38,12 @@
   }
 
   &-item {
-    @include typography-regular();
     @include typescale-tiny();
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 
     a {
       text-decoration: none;

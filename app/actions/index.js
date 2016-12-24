@@ -13,7 +13,7 @@ export function saveLoadTime(time) {
   };
 };
 
-export function updatePagePosition({ x, y, z, alpha }) {
+export function updatePagePosition({ x, y, z, alpha, animating }, state) {
   const updates = {};
 
   if (x !== null && x !== undefined) {
@@ -30,6 +30,10 @@ export function updatePagePosition({ x, y, z, alpha }) {
 
   if (alpha !== null && alpha !== undefined) {
     updates.pageOpacity = alpha;
+  }
+
+  if (typeof animating === 'boolean') {
+    updates.animating = animating;
   }
 
   return {

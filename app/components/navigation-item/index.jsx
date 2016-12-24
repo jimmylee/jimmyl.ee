@@ -9,6 +9,8 @@ import * as actions from '../../actions/index';
 
 const mapStateToProps = (state) => {
   return {
+    animating: state.rootReducer.animating,
+    pageOpacity: state.rootReducer.pageOpacity,
     selectedIndex: state.rootReducer.userNavHoverIndex
   };
 };
@@ -40,6 +42,10 @@ const navItem = React.createClass({
   _handleMouseMove: function() {
     if (this.props.index === this.props.selectedIndex) {
       return;
+    }
+
+    if (!this.props.animating) {
+      this.props.actions.updatePagePosition({ alpha: 0.1 });
     }
 
     this.props.actions.updateNavHover(this.props.index);

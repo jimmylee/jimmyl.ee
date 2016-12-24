@@ -327,7 +327,7 @@ export const diagramFour = {
 
 export const diagramFive = {
   title: 'Sources',
-  sizing: [`********`, `***********`],
+  sizing: [`*********`, `*********`],
   data: [
     ['2009', 'Tali Garsiel    ', 'http://taligarsiel.com/Projects/howbrowserswork1.htm'],
     ['2010', 'Jakob Nielsen', 'https://www.nngroup.com/articles/website-response-times/'],

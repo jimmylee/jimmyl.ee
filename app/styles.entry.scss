@@ -59,7 +59,7 @@ p {
 
 h1 {
   @include typescale-greatest();
-  font-family: sans-serif;
+  @include typography-ui();
   line-height: 1.3em;
   font-weight: 700;
 }
@@ -77,10 +77,10 @@ h3 {
 }
 
 h4 {
-  font-family: sans-serif;
+  @include typography-ui();
+  @include typescale-normal();
   line-height: 1.3em;
   margin-top: 40px;
   font-weight: 600;
   margin-bottom: 32px;
-  @include typescale-normal();
 }
