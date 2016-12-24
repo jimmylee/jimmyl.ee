@@ -126,6 +126,7 @@ const base = React.createClass({
           showNavigation={this._handleShowNavigation}
         />
         <div className="base-content" style={baseStyles}>{children}</div>
+        <div className="base-spacer" />
       </div>
     );
   }

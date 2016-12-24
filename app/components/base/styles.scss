@@ -9,7 +9,7 @@
     position: relative;
     margin: auto;
     box-sizing: border-box;
-    padding: 0 20px 128px 20px;
+    padding: 0 20px 0px 20px;
     width: 100%;
     max-width: $contentWidth;
     transition: 280ms $defaultCurve all;
@@ -20,7 +20,16 @@
       width: auto;
       max-width: none;
       padding: 0;
-      margin: 0 20px 128px 20px;
+      margin: 0 20px 0 20px;
+    }
+  }
+
+  &-spacer {
+    width: 100%;
+    height: 128px;
+
+    @media #{$mobileBreakpoint} {
+      height: 48px;
     }
   }
 }
