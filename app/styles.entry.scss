@@ -19,6 +19,12 @@ html {
   @include typescale-normal();
   overflow-y: scroll;
   background-color: $colors-background;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
 }
 
 body {
