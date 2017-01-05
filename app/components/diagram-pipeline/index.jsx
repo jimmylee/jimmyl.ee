@@ -35,7 +35,7 @@ export default React.createClass({
       return {
         width: '90%',
         fontSize: 8,
-        nodeHeight: 155
+        nodeHeight: 135
       };
     }
 
@@ -44,7 +44,7 @@ export default React.createClass({
       return {
         width: '90%',
         fontSize: 10,
-        nodeHeight: 155
+        nodeHeight: 140
       };
     }
 

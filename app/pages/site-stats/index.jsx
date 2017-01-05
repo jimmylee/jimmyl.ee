@@ -41,10 +41,6 @@ const pageStats = React.createClass({
         </Header>
 
         <p>
-          Historically I have held a strict no side project policy in my career. But I often wonder about the alternate universe since many choices we make on an engineering team are very contextual and are about alignment with the team. With this project, I've found an adequate method of experimenting at my convenience. Now I can live in multiple worlds with multiple methods of doing the exact same thing. It may be weird that I find that relieving.
-        </p>
-
-        <p>
         For dough I picked <a href="https://github.com/gulpjs/gulp">Gulp</a> and <a href="http://browserify.org/">Browserify</a> instead of <a href="https://github.com/webpack/webpack">Webpack</a>. I always use Webpack for <a href="https://github.com/facebook/react">React</a> projects so it feels nice to do things differently for fun. I have a feeling that the methodologies will converge and diverge for the rest of our lives. I usually crack jokes to cope with this.
         </p>
 

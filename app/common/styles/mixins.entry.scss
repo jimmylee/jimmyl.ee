@@ -56,10 +56,10 @@
 @mixin typescale-medium() { font-size: 1.125em; }
 
 @mixin typescale-normal() {
-  font-size: 16px;
+  font-size: 18px;
 
   @media #{$mobileBreakpoint} {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -75,21 +75,6 @@
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.108em;
-}
-
-@mixin text-subtitle-serif() {
-  @include typography-regular();
-  @include typescale-normal();
-  line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -0.016em;
-  font-style: normal;
-}
-
-@mixin text-subtitle-description() {
-  @include typography-regular();
-  @include typescale-smallest();
-  line-height: 1.3;
 }
 
 @mixin text-subtitle-description() {

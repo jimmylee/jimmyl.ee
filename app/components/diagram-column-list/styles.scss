@@ -38,7 +38,7 @@
   }
 
   &-item {
-    @include typescale-tiny();
+    @include typescale-smallest();
     text-align: left;
     display: flex;
     justify-content: space-between;

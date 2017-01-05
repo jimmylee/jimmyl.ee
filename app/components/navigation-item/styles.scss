@@ -47,8 +47,8 @@
   }
 
   &-description {
-    padding: 3px 0 3px 0;
     @include text-subtitle-description();
+    padding: 3px 0 3px 0;
     background-color: $colors-background;
 
     a {
