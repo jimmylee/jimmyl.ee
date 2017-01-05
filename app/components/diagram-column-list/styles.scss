@@ -10,6 +10,7 @@
   }
 
   &-text {
+    @include typescale-smallest();
     @include typography-ui();
     flex-shrink: 0;
     padding-right: 8px;
@@ -46,6 +47,7 @@
     margin-bottom: 16px;
 
     a {
+      @include typescale-smallest();
       text-decoration: none;
 
       &:hover {
