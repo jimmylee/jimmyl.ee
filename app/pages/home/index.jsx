@@ -18,7 +18,7 @@ const pageHome = React.createClass({
         </Header>
 
         <p>
-          I am an engineer living in San Francisco that loves building single page web applications and websites. If you share my love for building the web, I hope that we will find some time to collaborate someday, somehow.
+          I am an engineer living in San Francisco who loves creating single page web applications and websites. I also love working on front-end architecture and asset building systems. If you share my love for building the web, I hope that we will find some time to collaborate someday, somehow.
         </p>
 
         <Footer>

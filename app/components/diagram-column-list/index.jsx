@@ -57,9 +57,10 @@ export default React.createClass({
         const last = columnIndex === each.length - 1;
         const classes = classnames('diagram-column-list-text', {
           'diagram-column-list-text--bold': each.length > 1 && columnIndex === 0,
-          'diagram-column-list-text--extendedPadding': columnIndex === 1,
+          'diagram-column-list-text--spaced': columnIndex === 1,
           'diagram-column-list-text--last': last,
-          'diagram-column-list-text--same': same
+          'diagram-column-list-text--same': same,
+          'diagram-column-list-text--static': !last
         });
 
         if (last && column.startsWith && column.startsWith('http')) {

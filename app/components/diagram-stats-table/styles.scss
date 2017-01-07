@@ -14,7 +14,7 @@
   }
 
   &-name {
-    @include text-subtext();
+    @include text-small-title();
     margin-bottom: 8px;
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 const currentYear = new Date().getFullYear();
 
 export const diagramOne = {
-  title: 'Live Work',
+  title: 'Production',
   sizing: [`***********`, `*********`],
   data: [
     [`2016 — ${currentYear}`, <a href="https://bold.io">IO</a>, 'Single user writing experience and publishing.'],
