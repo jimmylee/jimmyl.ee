@@ -25,7 +25,7 @@ export const diagramThree = {
   sizing: [`***********`, `*********`],
   data: [
     [`2012`, <a href="https://techcrunch.com/2012/11/05/jive-software-acquires-meetings-io-and-producteev-to-enhance-social-platform-with-real-time-messaging-and-task-management/">MeetingsIO</a>, 'Video chat without the need for authentication. The business was acquired.'],
-    [`2011`, <a href="https://blogs.msdn.microsoft.com/xweb/2010/07/19/free-green-business-web-site-template/">Microsoft</a>, 'Five HTML 1.0 strict templates for Expression Web 4. The product was discontinued.']
+    [`2010`, <a href="https://blogs.msdn.microsoft.com/xweb/2010/07/19/free-green-business-web-site-template/">Microsoft</a>, 'Five HTML 1.0 strict templates for Expression Web 4. The product was discontinued.']
   ]
 };
 
