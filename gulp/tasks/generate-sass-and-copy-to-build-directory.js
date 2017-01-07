@@ -24,7 +24,7 @@ gulp.task('generate-sass-and-copy-to-build-directory', function() {
   return gulp.src(config.styles.src)
     .pipe(insert.append(allSassImports))
     .pipe(sass({
-        sourceComments: global.isProduction ? 'none' : 'map',
+        sourceComments: !global.isProduction,
         outputStyle: global.isProduction ? 'compressed' : 'nested'
     }))
     .on('error', handleErrors)
