@@ -10,8 +10,8 @@
   }
 
   &-text {
-    @include typescale-smallest();
     @include typography-ui();
+    font-size: 0.82em;
     flex-shrink: 0;
     padding-right: 8px;
     width: 100%;
@@ -39,7 +39,7 @@
   }
 
   &-item {
-    @include typescale-smallest();
+    font-size: 0.82em;
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -47,7 +47,6 @@
     margin-bottom: 16px;
 
     a {
-      @include typescale-smallest();
       text-decoration: none;
 
       &:hover {
