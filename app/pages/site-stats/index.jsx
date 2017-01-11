@@ -26,11 +26,11 @@ const pageStats = React.createClass({
       },
       {
         name: 'JavaScript',
-        data: '510kbs'
+        data: '105kbs'
       },
       {
         name: 'CSS',
-        data: '21kbs'
+        data: '2.8kbs'
       }
     ];
 
@@ -51,7 +51,7 @@ const pageStats = React.createClass({
         </p>
 
         <p>
-        All the assets of this website are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket. They are without gzip. I pay almost nothing to do this.
+        All the assets of this website are served from an <a href="https://aws.amazon.com/s3">Amazon S3</a> Bucket with a gzip before upload. I pay almost nothing to do this.
         </p>
 
         <StatsTable data={pageStats} />
