@@ -1,6 +1,7 @@
 'use strict';
 
 import gulp from 'gulp';
+import gzip from 'gulp-gzip';
 import gulpif from 'gulp-if';
 import gutil from 'gulp-util';
 import source from 'vinyl-source-stream';
@@ -44,6 +45,9 @@ function buildScript(file, watch) {
         basename: 'main'
       })))
       .pipe(gulpif(!global.isProduction, sourcemaps.write('./')))
+      .pipe(gulpif(global.isProduction, gzip({
+        append: false
+      })))
       .pipe(gulp.dest(config.scripts.dest))
       .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
   }

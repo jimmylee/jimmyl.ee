@@ -1,6 +1,7 @@
 'use strict';
 
 import gulp from 'gulp';
+import gzip from 'gulp-gzip';
 import fs from 'fs';
 import sass from 'gulp-sass';
 import gulpIf from 'gulp-if';
@@ -29,6 +30,9 @@ gulp.task('generate-sass-and-copy-to-build-directory', function() {
     }))
     .on('error', handleErrors)
     .pipe(autoPrefixer('last 2 versions', '> 1%', 'ie 8'))
+    .pipe(gulpIf(global.isProduction, gzip({
+      append: false
+    })))
     .pipe(rename(config.styles.fileName))
     .pipe(gulp.dest(config.styles.dest))
     .pipe(gulpIf(browserSync.active, browserSync.reload({ stream: true })));
