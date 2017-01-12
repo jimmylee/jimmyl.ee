@@ -13,7 +13,7 @@ import pageStats from '../pages/site-stats/index';
 
 export const baseRoute = '/';
 export const navigationItems = [
-  (n => {
+  n => {
     const url = baseRoute;
     const title = 'Foreword';
     const emojis = ['🙂', '🙃', '😉'];
@@ -21,8 +21,8 @@ export const navigationItems = [
     const component = decorateComponentWithProps(pageHome, { description });
 
     return { component, description, emojis, title, url };
-  })(),
-  (n => {
+  },
+  n => {
     const url = '/site-analysis';
     const title = 'Site Analysis';
     const emojis = ['🚶', '🏃', '⛹'];
@@ -32,8 +32,8 @@ export const navigationItems = [
     const component = decorateComponentWithProps(pageStats, { description });
 
     return { component, description, emojis, title, url };
-  })(),
-  (n => {
+  },
+  n => {
     const url = '/animation-performance';
     const title = 'Performant CSS Animations';
     const emojis = ['🐬', '🐳', '🐋'];
@@ -41,8 +41,8 @@ export const navigationItems = [
     const component = decorateComponentWithProps(pageCSSAnimations, { description });
 
     return { component, description, emojis, title, url };
-  })(),
-  (n => {
+  },
+  n => {
     const url = '/writing-css';
     const title = 'Performant CSS';
     const emojis = ['🌱', '🌿', '🌾'];
@@ -50,24 +50,26 @@ export const navigationItems = [
     const component = decorateComponentWithProps(pageWritingCSS, { description });
 
     return { component, description, emojis, title, url };
-  })(),
-  (n => {
+  },
+  n => {
     const url = '*';
     const hide = true;
     const component = pageNotFound;
 
     return { component, hide, url };
-  })()
+  }
 ];
 
 export const createRoutes = () => {
-  const items = navigationItems.map((item, index) => {
+  const items = navigationItems.map((each, index) => {
+    const { component, url } = each();
+
     if (index === 0) {
-      return <IndexRoute key={index} component={item.component} onEnter={dispatchEnterEvent} />;
+      return <IndexRoute key={index} component={component} onEnter={dispatchEnterEvent} />;
     }
 
     return (
-      <Route key={index} path={item.url} component={item.component} onEnter={dispatchEnterEvent} />
+      <Route key={index} path={url} component={component} onEnter={dispatchEnterEvent} />
     );
   });
 

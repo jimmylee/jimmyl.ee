@@ -36,7 +36,7 @@ const navigation = React.createClass({
     const { currentPath, links } = this.props;
 
     const elements = links.map((each, i) => {
-      const { description, hide, emojis, title, url } = each;
+      const { description, hide, emojis, title, url } = each();
       if (hide) {
         return;
       }
