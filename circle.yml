@@ -27,4 +27,5 @@ deployment:
     branch: master
     commands:
       - npm run build
-      - aws s3 sync build s3://jimmyl.ee --content-encoding 'gzip'
+      - aws s3 sync build s3://jimmyl.ee --exclude 'images/*' --content-encoding 'gzip'
+      - aws s3 sync build/images s3://jimmyl.ee/images
