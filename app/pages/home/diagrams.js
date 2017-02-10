@@ -34,8 +34,7 @@ export const diagramFour = {
   sizing: [],
   data: [
     [<a href="https://www.twitter.com/meanjim">Twitter</a>],
-    [<a href="https://www.github.com/meanjim">Github</a>],
-    [<a href="https://angel.co/meanjim">Angel List</a>],
+    [<a href="https://www.github.com/jimmylee">Github</a>],
     ['request [at] jimmyl.ee'],
     [`© ${currentYear} — Jimmy Lee`]
   ]
