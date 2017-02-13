@@ -127,7 +127,7 @@ const pageCSSAnimations = React.createClass({
         <h4>Changing CSS Transform</h4>
 
         <p>
-          Here is an example of when we animate the CSS property transform by changing translateY:
+          Here is an example of when we animate the CSS property <q>transform</q> by changing translateY:
         </p>
 
         <TwoThreadDiagram tree={diagramThree} />
@@ -139,7 +139,7 @@ const pageCSSAnimations = React.createClass({
         <h4>Into The Code</h4>
 
         <p>
-          Here is a CSS animation. It is not bad! This CSS excerpt forces the browser to create a composited layer for an element when the page loads. When a user hovers, the browser does not have to perform a layout or paint operation and can animate the change in transform smoothly.
+          Here is a CSS animation. It is not bad! This CSS excerpt forces the browser to create a composited layer for an element when the page loads. When a user hovers, the browser does not have to perform a layout or paint operation and can animate the change in <q>transform</q> smoothly.
         </p>
 
 <Code language="scss">
@@ -166,7 +166,7 @@ const pageCSSAnimations = React.createClass({
         </p>
 
         <p>
-          Animating these arguments of transform will only invalidate graphic layers and trigger page compositing:
+          Animating these arguments of <q>transform</q> will only invalidate graphic layers and trigger page compositing:
         </p>
 
 <Code language="scss">
