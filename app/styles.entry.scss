@@ -80,8 +80,9 @@ p {
 h1 {
   @include typescale-greatest();
   @include typography-ui();
+  color: #000000;
   line-height: 1.3em;
-  font-weight: 700;
+  font-weight: 200;
 }
 
 h2 {
