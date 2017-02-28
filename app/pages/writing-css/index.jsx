@@ -35,12 +35,20 @@ export default React.createClass({
         A tree is created called the CSSOM. It stands for the CSS Object Model. Here is a brief overview of how your browser creates the CSSOM:
         </p>
 
-        <p>
-        1. Read the raw bytes of the CSS or network and translate them into characters based on your system's encoding.<br />
-        2. Browser converts strings of characters into tokens.<br />
-        3. The browser transforms tokens into objects that hold properties and values.<br />
-        4. Objects are composed to form a tree based on their abstracted child, sibling, and parent relationship.
-        </p>
+        <ol>
+          <li>
+            Read the raw bytes of the CSS or network and translate them into characters based on your system's encoding.
+          </li>
+          <li>
+            Browser converts strings of characters into tokens.
+          </li>
+          <li>
+            The browser transforms tokens into objects that hold properties and values.
+          </li>
+          <li>
+            Objects are composed to form a tree based on their abstracted child, sibling, and parent relationship.
+          </li>
+        </ol>
 
         <p>
         The product is a tree that the browser can use to determine the most applicable rules for any given DOM tree node.

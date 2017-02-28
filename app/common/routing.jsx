@@ -27,7 +27,7 @@ export const navigationItems = [
     const title = 'Site Analysis';
     const emojis = ['🚶', '🏃', '⛹'];
     const description = (
-      <span>This project uses <a href="https://github.com/meanJim/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary if you use it.</span>
+      <span>This project uses <a href="https://github.com/jimmylee/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary if you use it.</span>
     );
     const component = decorateComponentWithProps(pageStats, { description });
 

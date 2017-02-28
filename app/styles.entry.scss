@@ -67,13 +67,15 @@ q {
 
 a {
   @include transition-link();
+  color: blue;
   text-decoration: underline;
 }
 
 p {
   @include typescale-normal();
-  line-height: 1.95em;
+  line-height: 1.68em;
   margin-top: 24px;
+  font-weight: 200;
   letter-spacing: 0.1px;
 }
 
@@ -82,7 +84,7 @@ h1 {
   @include typography-ui();
   color: #000000;
   line-height: 1.3em;
-  font-weight: 200;
+  font-weight: 700;
 }
 
 h2 {
@@ -98,10 +100,20 @@ h3 {
 }
 
 h4 {
-  @include typography-regular();
+  font-family: helvetica, sans-serif;
   @include typescale-normal();
   line-height: 1.3em;
-  margin-top: 40px;
+  margin-top: 48px;
   font-weight: 600;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+}
+
+ol {
+  padding-left: 24px;
+  margin-top: 24px;
+
+  li {
+    padding-left: 8px;
+    margin-bottom: 24px;
+  }
 }
