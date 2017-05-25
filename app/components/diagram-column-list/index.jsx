@@ -4,13 +4,13 @@ import { getViewportSize } from '../../common/window';
 
 export default React.createClass({
   propTypes: {
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
   },
 
   getInitialState() {
     window.addEventListener('resize', this._handleResize);
     return {
-      characterSize: this._getCharacterSize()
+      characterSize: this._getCharacterSize(),
     };
   },
 
@@ -19,7 +19,7 @@ export default React.createClass({
   },
 
   _getCharacterSize() {
-    return (getViewportSize().width < 680) ? 7 : 9;
+    return getViewportSize().width < 680 ? 7 : 9;
   },
 
   _handleResize() {
@@ -50,22 +50,26 @@ export default React.createClass({
 
         let same = false;
         if (columnIndex === 0) {
-          same = (column === lastColumn);
+          same = column === lastColumn;
           lastColumn = column;
         }
 
         const last = columnIndex === each.length - 1;
         const classes = classnames('diagram-column-list-text', {
-          'diagram-column-list-text--bold': each.length > 1 && columnIndex === 0,
-          'diagram-column-list-text--spaced': columnIndex === 1,
+          'diagram-column-list-text--bold': (each.length > 1 &&
+            columnIndex === 0) ||
+            columnIndex === 1,
+          'diagram-column-list-text--spaced': columnIndex === 0 ||
+            columnIndex === 1,
           'diagram-column-list-text--last': last,
           'diagram-column-list-text--same': same,
-          'diagram-column-list-text--static': !last
+          'diagram-column-list-text--static': !last,
         });
 
         if (last && column.startsWith && column.startsWith('http')) {
           return (
-            <a className={classes}
+            <a
+              className={classes}
               href={column}
               key={column}
               style={columnStyles}>
@@ -75,15 +79,15 @@ export default React.createClass({
         }
 
         return (
-          <span className={classes}
-            key={column}
-            style={columnStyles}>
+          <span className={classes} key={column} style={columnStyles}>
             {column}
           </span>
         );
       });
 
-      return <li className="diagram-column-list-item" key={index}>{columns}</li>;
+      return (
+        <li className="diagram-column-list-item" key={index}>{columns}</li>
+      );
     });
 
     return (
@@ -92,5 +96,5 @@ export default React.createClass({
         {listElements}
       </ul>
     );
-  }
+  },
 });

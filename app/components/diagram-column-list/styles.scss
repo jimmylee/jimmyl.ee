@@ -10,14 +10,15 @@
   }
 
   &-text {
-    @include typography-ui();
-    font-size: 0.82em;
+    font-family: 'INCONSOLATA', monospace;
+    @include typescale-tiny();
     padding-right: 8px;
     width: 100%;
     overflow-wrap: break-word;
 
     &--bold {
-      font-weight: 600;
+      font-weight: 400;
+      flex-shrink: 0;
     }
 
     &--spaced {
@@ -41,7 +42,7 @@
   }
 
   &-item {
-    font-size: 0.82em;
+    @include typescale-tiny();
     text-align: left;
     display: flex;
     justify-content: space-between;

@@ -9,8 +9,6 @@ const currentYear = new Date().getFullYear();
 
 const pageHome = React.createClass({
   render() {
-    const yearsSince = currentYear - 2008;
-
     return (
       <Content>
         <Header>
@@ -18,7 +16,13 @@ const pageHome = React.createClass({
         </Header>
 
         <p>
-          I am an engineer living in San Francisco who loves creating single page web applications and websites. I also love researching front-end architecture and asset building systems. If you share my love for building the web, I hope that we will find some time to collaborate someday, somehow.
+          I am an engineer living in San Francisco who loves creating single page web applications and websites. I also love researching front-end architecture and asset building systems. Design is a big part of my life and I am excited to see more engineers dedicating themselves to learning design and thinking about the usage of their software.
+        </p>
+        <p>
+          I currently work on the web platform for
+          {' '}
+          <a href="https://expo.io" alt="Expo product website">Expo</a>
+          . If you love building for the web as much as I do, you should reach out.
         </p>
 
         <Footer>
@@ -29,7 +33,7 @@ const pageHome = React.createClass({
         </Footer>
       </Content>
     );
-  }
+  },
 });
 
 export default pageHome;
