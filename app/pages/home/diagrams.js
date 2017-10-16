@@ -2,66 +2,66 @@ import React from 'react';
 const currentYear = new Date().getFullYear();
 
 export const diagramOne = {
-  title: 'Production',
+  title: 'In production',
   sizing: [`***********`, `*********`],
   data: [
     [
       `2017`,
       <a href="https://expo.io">Expo</a>,
-      'Working on the web platform for the best way to build react native applications.',
+      'Expo is a platform, development tools, and a new medium. I am currently building products for people who use and create Expo projects.',
     ],
     [
       '2014 — 2016',
       <a href="https://patreon.com">Patreon</a>,
-      'Providing a method for creators to get recurring funding. Built patron and creator web experiences.',
+      'Patreon is an online platform for helping creators get paid. I refactored and built a lot of the web experience and established the Front-end Engineering team.',
     ],
     [
       '2013 — 2014',
-      <a href="https://www.neonmob.com">Neon Mob</a>,
-      'Trading digital art and creating digital scarcity. Worked on a two sided marketplace with social game mechanics.',
+      <a href="https://www.neonmob.com">NeonMob</a>,
+      'NeonMob is an online platform for trading and collecting art. I worked on the Front-end.',
     ],
   ],
 };
 
 export const diagramTwo = {
-  title: 'Unfinished',
+  title: 'Work in progress',
   sizing: [`***********`, `*********`],
   data: [
     [
       `2015 — ${currentYear}`,
       'Rabbit Camp',
-      'A strategy RPG built on my WebGL game engine. Working and dreaming about this whenever I get free time (never).',
+      'Rabbit Camp is a strategy RPG built on my WebGL game engine. Built from scratch.',
     ],
   ],
 };
 
 export const diagramThree = {
-  title: 'Graveyard',
+  title: 'Discontinued',
   sizing: [`***********`, `*********`],
   data: [
     [
       `2016 — 2017`,
       <a href="https://bold.io">IO</a>,
-      'Single user writing experience and publishing. Development discontinued.',
+      'IO is a single user writing experience with anonymous publishing. I built the Front-end. The company was acquired by Postmates.',
     ],
     [
       `2016 — 2017`,
       <a href="https://bold.co">Bold</a>,
-      'A private internal blog for companies with auxiliary features based on requests. Development discontinued.',
+      'Bold is a private internal blog for companies with social features. I built the Front-end with collaborators. The company was acquired by Postmates.',
     ],
     [
       `2012`,
       <a href="https://techcrunch.com/2012/11/05/jive-software-acquires-meetings-io-and-producteev-to-enhance-social-platform-with-real-time-messaging-and-task-management/">
         Meetings IO
       </a>,
-      'Video chat without the need for authentication. The business was acquired.',
+      'MeetingsIO was a web based video chat using WebRTC. I built Front-end features. The company was acquired by Jive Software.',
     ],
     [
       `2010`,
       <a href="https://blogs.msdn.microsoft.com/xweb/2010/07/19/free-green-business-web-site-template/">
         Microsoft EW4
       </a>,
-      'Five HTML 1.0 strict templates for Expression Web 4. The product was discontinued.',
+      'Microsoft Expression Web 4 was the next evolution of Microsoft Front Page. I made five HTML 1.0 strict templates for Expression Web 4. The product was discontinued.',
     ],
   ],
 };
@@ -72,7 +72,7 @@ export const diagramFour = {
   data: [
     [<a href="https://www.twitter.com/meanjim">Twitter</a>],
     [<a href="https://www.github.com/jimmylee">Github</a>],
-    ['request [at] jimmyl.ee'],
+    ['jim [at] expo.io'],
     [`© ${currentYear} — Jimmy Lee`],
   ],
 };

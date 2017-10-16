@@ -45,7 +45,7 @@
 }
 
 @mixin typography-ui {
-  font-family: helvetica, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
 
 @mixin typography-bold() { font-weight: 700; }
@@ -74,7 +74,7 @@
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
-  letter-spacing: 0.108rem;
+  letter-spacing: 0.08rem;
 }
 
 @mixin text-subtitle-description() {

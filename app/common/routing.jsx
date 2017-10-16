@@ -17,7 +17,7 @@ export const navigationItems = [
     const url = baseRoute;
     const title = 'Foreword';
     const emojis = ['🙂', '🙃', '😉'];
-    const description = 'This is my internet archive of project history, research, and experiments.';
+    const description = 'This is just a document on the web.';
     const component = decorateComponentWithProps(pageHome, { description });
 
     return { component, description, emojis, title, url };
@@ -27,7 +27,11 @@ export const navigationItems = [
     const title = 'Site Analysis';
     const emojis = ['🚶', '🏃', '⛹'];
     const description = (
-      <span>This project uses <a href="https://github.com/jimmylee/dough">Dough</a> on <a href="https://github.com/">GitHub</a>. No credit is necessary if you use it.</span>
+      <span>
+        This project uses a repository called
+        {' '}
+        <a href="https://github.com/jimmylee/dough">Dough</a>.
+      </span>
     );
     const component = decorateComponentWithProps(pageStats, { description });
 
@@ -37,8 +41,11 @@ export const navigationItems = [
     const url = '/animation-performance';
     const title = 'Performant CSS Animations';
     const emojis = ['🐬', '🐳', '🐋'];
-    const description = 'My understanding of CSS animation performance in the browser.';
-    const component = decorateComponentWithProps(pageCSSAnimations, { description });
+    const description =
+      'My understanding of CSS animation performance in the browser.';
+    const component = decorateComponentWithProps(pageCSSAnimations, {
+      description,
+    });
 
     return { component, description, emojis, title, url };
   },
@@ -46,8 +53,11 @@ export const navigationItems = [
     const url = '/writing-css';
     const title = 'Performant CSS';
     const emojis = ['🌱', '🌿', '🌾'];
-    const description = 'A set of tactics to ensure fast CSS Object Model creation.';
-    const component = decorateComponentWithProps(pageWritingCSS, { description });
+    const description =
+      'A set of tactics to ensure fast CSS Object Model creation.';
+    const component = decorateComponentWithProps(pageWritingCSS, {
+      description,
+    });
 
     return { component, description, emojis, title, url };
   },
@@ -57,7 +67,7 @@ export const navigationItems = [
     const component = pageNotFound;
 
     return { component, hide, url };
-  }
+  },
 ];
 
 export const createRoutes = () => {
@@ -65,11 +75,22 @@ export const createRoutes = () => {
     const { component, url } = each();
 
     if (index === 0) {
-      return <IndexRoute key={index} component={component} onEnter={dispatchEnterEvent} />;
+      return (
+        <IndexRoute
+          key={index}
+          component={component}
+          onEnter={dispatchEnterEvent}
+        />
+      );
     }
 
     return (
-      <Route key={index} path={url} component={component} onEnter={dispatchEnterEvent} />
+      <Route
+        key={index}
+        path={url}
+        component={component}
+        onEnter={dispatchEnterEvent}
+      />
     );
   });
 
