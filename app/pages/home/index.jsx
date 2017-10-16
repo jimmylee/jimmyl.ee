@@ -16,12 +16,12 @@ const pageHome = React.createClass({
         </Header>
 
         <p>
-          I am a guy that lives to build websites, web applications, and WebGL experiments. If the opportunity arises, I like jumping on design challenges. The internet is responsible for creating a lot of my perception of the world during my formative years, so I feel really lucky I get to make things for it.
+          I am a guy that lives to build websites, web applications, and WebGL experiments. I live and work in San Francisco.
           {' '}
         </p>
 
         <p>
-          I currently work on the web platform for
+          I'm working on the web platform for
           {' '}
           <a href="https://expo.io" alt="Expo product website">Expo</a>
           . If you love building for the web as much as I do, you should reach out.
