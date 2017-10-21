@@ -3,28 +3,25 @@ import { getViewportSize } from '../../common/window';
 const treeNodeHeight = 24 * 6;
 const treeGutters = 48;
 
-export default React.createClass({
-  propTypes: {
-    tree: React.PropTypes.object
-  },
-
-  getInitialState() {
-    return this._handleSizing();
-  },
+export default class DiagramPipeline extends React.Component {
+  constructor() {
+    super();
+    this.state = this._handleSizing();
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this._handleResize);
-  },
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleResize);
-  },
+  }
 
-  _handleResize() {
+  _handleResize = () => {
     this.setState(this._handleSizing());
-  },
+  };
 
-  _handleSizing() {
+  _handleSizing = () => {
     const browserWidth = getViewportSize().width;
 
     let width = '75%';
@@ -35,16 +32,15 @@ export default React.createClass({
       return {
         width: '90%',
         fontSize: 8,
-        nodeHeight: 135
+        nodeHeight: 135,
       };
     }
-
 
     if (browserWidth < 480) {
       return {
         width: '90%',
         fontSize: 10,
-        nodeHeight: 140
+        nodeHeight: 140,
       };
     }
 
@@ -52,7 +48,7 @@ export default React.createClass({
       return {
         width: '90%',
         fontSize: 12,
-        nodeHeight: 145
+        nodeHeight: 145,
       };
     }
 
@@ -60,7 +56,7 @@ export default React.createClass({
       return {
         width: '90%',
         fontSize: 12,
-        nodeHeight: 125
+        nodeHeight: 125,
       };
     }
 
@@ -68,16 +64,16 @@ export default React.createClass({
       return {
         width: '85%',
         fontSize: 14,
-        nodeHeight
+        nodeHeight,
       };
     }
 
     return {
       width,
       fontSize,
-      nodeHeight
+      nodeHeight,
     };
-  },
+  };
 
   render() {
     const { tree } = this.props;
@@ -94,7 +90,9 @@ export default React.createClass({
         let label;
         if (t.label) {
           label = (
-            <label className="diagram-pipeline-tree-node-title" style={typeStyles}>
+            <label
+              className="diagram-pipeline-tree-node-title"
+              style={typeStyles}>
               {t.label}
             </label>
           );
@@ -109,12 +107,16 @@ export default React.createClass({
           );
         }
 
-        return <div className="diagram-pipeline-tree-node" key={index}>{label}{copy}</div>;
+        return (
+          <div className="diagram-pipeline-tree-node" key={index}>
+            {label}{copy}
+          </div>
+        );
       }
     });
 
     let treeStyles = {
-      height: `${height + treeGutters + treeNodeHeight}px`
+      height: `${height + treeGutters + treeNodeHeight}px`,
     };
 
     return (
@@ -130,4 +132,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}

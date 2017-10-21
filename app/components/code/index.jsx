@@ -1,5 +1,7 @@
 import React from 'react';
-import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/dist/light"
+import SyntaxHighlighter, {
+  registerLanguage,
+} from 'react-syntax-highlighter/dist/light';
 import { github } from 'react-syntax-highlighter/dist/styles';
 
 import js from './javascript';
@@ -14,15 +16,10 @@ const syntaxHighlighterStyles = {
   boxShadow: 'inset 0 0 0 1px rgba(238, 238, 238, 1)',
   fontSize: '0.8em',
   margin: '40px 0 40px 0',
-  padding: '16px'
+  padding: '16px',
 };
 
-export default React.createClass({
-  propTypes: {
-    children: React.PropTypes.node,
-    language: React.PropTypes.string
-  },
-
+export default class Code extends React.Component {
   render() {
     const { children, language } = this.props;
 
@@ -35,4 +32,4 @@ export default React.createClass({
       />
     );
   }
-});
+}

@@ -23,33 +23,50 @@ function buildScript(file, watch) {
     debug: !global.isProduction,
     cache: {},
     packageCache: {},
-    fullPaths: true
+    fullPaths: true,
   });
 
-  if ( watch ) {
+  if (watch) {
     bundler = watchify(bundler);
     bundler.on('update', rebundle);
   }
 
-  bundler.transform(babelify, { presets: ["es2015", "react", 'stage-0'] });
+  bundler.transform(babelify, {
+    presets: ['es2015', 'react', 'stage-1', 'stage-2', 'stage-3'],
+  });
 
   function rebundle() {
     let stream = bundler.bundle();
 
     gutil.log('Rebuilding');
 
-    return stream.on('error', handleErrors)
+    return stream
+      .on('error', handleErrors)
       .pipe(source(file))
       .pipe(gulpif(global.isProduction, streamify(uglify())))
-      .pipe(streamify(rename({
-        basename: 'main'
-      })))
+      .pipe(
+        streamify(
+          rename({
+            basename: 'main',
+          })
+        )
+      )
       .pipe(gulpif(!global.isProduction, sourcemaps.write('./')))
-      .pipe(gulpif(global.isProduction, gzip({
-        append: false
-      })))
+      .pipe(
+        gulpif(
+          global.isProduction,
+          gzip({
+            append: false,
+          })
+        )
+      )
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
+      .pipe(
+        gulpif(
+          browserSync.active,
+          browserSync.reload({ stream: true, once: true })
+        )
+      );
   }
 
   return rebundle();

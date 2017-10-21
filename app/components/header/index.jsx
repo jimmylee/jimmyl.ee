@@ -1,11 +1,7 @@
 import React from 'react';
 
-export default React.createClass({
-  propTypes: {
-    children: React.PropTypes.node
-  },
-
+export default class Header extends React.Component {
   render() {
     return <header>{this.props.children}</header>;
   }
-});
+}

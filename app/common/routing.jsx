@@ -1,9 +1,8 @@
 import React from 'react';
 import base from '../components/base/index';
 
-import { dispatchEnterEvent } from '../common/dispatch';
 import { decorateComponentWithProps } from '../common/react';
-import { Route, IndexRoute } from 'react-router';
+import { Switch, Route } from 'react-router';
 
 import pageWritingCSS from '../pages/writing-css/index';
 import pageCSSAnimations from '../pages/css-animations/index';
@@ -75,24 +74,15 @@ export const createRoutes = () => {
     const { component, url } = each();
 
     if (index === 0) {
-      return (
-        <IndexRoute
-          key={index}
-          component={component}
-          onEnter={dispatchEnterEvent}
-        />
-      );
+      return <Route exact key={index} path="/" component={component} />;
     }
 
-    return (
-      <Route
-        key={index}
-        path={url}
-        component={component}
-        onEnter={dispatchEnterEvent}
-      />
-    );
+    if (url === '*') {
+      return;
+    }
+
+    return <Route key={index} path={url} component={component} />;
   });
 
-  return <Route path={baseRoute} component={base}>{items}</Route>;
+  return <Switch>{items}</Switch>;
 };

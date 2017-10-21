@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default React.createClass({
-  propTypes: {
-    children: React.PropTypes.node
-  },
-
+export default class Footer extends React.Component {
   render() {
     return (
       <footer className="footer">
@@ -12,4 +8,4 @@ export default React.createClass({
       </footer>
     );
   }
-});
+}

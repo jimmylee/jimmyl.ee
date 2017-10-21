@@ -1,11 +1,7 @@
 import React from 'react';
 
-export default React.createClass({
-  propTypes: {
-    children: React.PropTypes.node
-  },
-
+export default class Content extends React.Component {
   render() {
     return <article className="content" children={this.props.children} />;
   }
-});
+}

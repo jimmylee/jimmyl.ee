@@ -1,33 +1,25 @@
 import classnames from 'classnames';
 import React from 'react';
 
-export default React.createClass({
-  propTypes: {
-    emojis: React.PropTypes.array,
-    hovered: React.PropTypes.bool,
-    rotations: React.PropTypes.number,
-    selected: React.PropTypes.bool,
-    value: React.PropTypes.string
-  },
+export default class Cube extends React.Component {
+  static defaultProps = {
+    emojis: ['🛳', '🚀', '🛰'],
+    hovered: false,
+    rotations: 4,
+    selected: false,
+  };
 
-  getDefaultProps() {
-    return {
-      emojis: ['🛳', '🚀', '🛰'],
-      hovered: false,
-      rotations: 4,
-      selected: false
-    };
-  },
-
-  _getSides() {
+  _getSides = () => {
     const { emojis, selected, value } = this.props;
     const sides = [];
 
-    sides.push(<li className="cube-side" key="cube-value">
-      <span className="cube-side-content">{value}</span>
-    </li>);
+    sides.push(
+      <li className="cube-side" key="cube-value">
+        <span className="cube-side-content">{value}</span>
+      </li>
+    );
 
-    emojis.forEach((emoji) => {
+    emojis.forEach(emoji => {
       sides.push(
         <li className="cube-side" key={emoji}>
           <span className="cube-side-content">
@@ -38,7 +30,7 @@ export default React.createClass({
     });
 
     return sides;
-  },
+  };
 
   render() {
     const { hovered, rotations, selected } = this.props;
@@ -50,7 +42,7 @@ export default React.createClass({
       'cube--rotateEach': rotations === 4,
       'cube--rotateFull': rotations > 4,
       'cube--selected': selected,
-      'cube--hovered': hovered
+      'cube--hovered': hovered,
     });
 
     const sides = this._getSides();
@@ -61,4 +53,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}

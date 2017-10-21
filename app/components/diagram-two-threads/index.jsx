@@ -5,28 +5,25 @@ import { getViewportSize } from '../../common/window';
 const treeNodeHeight = 24 * 6;
 const treeGutters = 48;
 
-export default React.createClass({
-  propTypes: {
-    tree: React.PropTypes.object
-  },
-
-  getInitialState() {
-    return this._handleSizing();
-  },
+export default class DiagramTwoThreads extends React.Component {
+  constructor() {
+    super();
+    this.state = this._handleSizing();
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this._handleResize);
-  },
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleResize);
-  },
+  }
 
-  _handleResize() {
+  _handleResize = () => {
     this.setState(this._handleSizing());
-  },
+  };
 
-  _handleSizing() {
+  _handleSizing = () => {
     const browserWidth = getViewportSize().width;
     const leftOffset = 90;
     const rightOffset = 90;
@@ -40,7 +37,7 @@ export default React.createClass({
         leftOffset: 35,
         rightOffset: 35,
         width: 70,
-        fontSize: 10
+        fontSize: 10,
       };
     }
 
@@ -50,7 +47,7 @@ export default React.createClass({
         leftOffset: 75,
         rightOffset: 75,
         width: 150,
-        fontSize: 12
+        fontSize: 12,
       };
     }
 
@@ -60,7 +57,7 @@ export default React.createClass({
         leftOffset,
         rightOffset,
         width,
-        fontSize: 14
+        fontSize: 14,
       };
     }
 
@@ -69,24 +66,30 @@ export default React.createClass({
       leftOffset,
       rightOffset,
       width,
-      fontSize
+      fontSize,
     };
-  },
+  };
 
   render() {
     const { tree } = this.props;
-    const { fontSize, leftOffset, rightOffset, width, parentWidth } = this.state;
+    const {
+      fontSize,
+      leftOffset,
+      rightOffset,
+      width,
+      parentWidth,
+    } = this.state;
 
     const leftLineStyles = {
-      left: leftOffset
+      left: leftOffset,
     };
 
     const rightLineStyles = {
-      right: rightOffset
+      right: rightOffset,
     };
 
     const parentStyles = {
-      width: parentWidth
+      width: parentWidth,
     };
 
     let height = 0;
@@ -95,14 +98,16 @@ export default React.createClass({
         const middleLineStyles = {
           top: t.x + 32,
           left: leftOffset,
-          right: rightOffset
+          right: rightOffset,
         };
 
         const classes = classnames('diagram-two-threads-middleLine', {
-          'diagram-two-threads-middleLine--emphasis': t.emphasis
+          'diagram-two-threads-middleLine--emphasis': t.emphasis,
         });
 
-        return <span className={classes} key={index} style={middleLineStyles} />;
+        return (
+          <span className={classes} key={index} style={middleLineStyles} />
+        );
       }
 
       if (t.type === 'left') {
@@ -111,11 +116,11 @@ export default React.createClass({
         const leftCircleStyles = {
           fontSize,
           top: t.x,
-          width
+          width,
         };
 
         const classes = classnames('diagram-two-threads-tree-leftCircle', {
-          'diagram-two-threads-tree-leftCircle--emphasis': t.emphasis
+          'diagram-two-threads-tree-leftCircle--emphasis': t.emphasis,
         });
 
         return (
@@ -133,11 +138,11 @@ export default React.createClass({
         const rightCircleStyles = {
           fontSize,
           top: t.x,
-          width
+          width,
         };
 
         const classes = classnames('diagram-two-threads-tree-rightCircle', {
-          'diagram-two-threads-tree-rightCircle--emphasis': t.emphasis
+          'diagram-two-threads-tree-rightCircle--emphasis': t.emphasis,
         });
 
         return (
@@ -151,21 +156,29 @@ export default React.createClass({
     });
 
     let treeStyles = {
-      height: `${height + treeGutters + treeNodeHeight}px`
+      height: `${height + treeGutters + treeNodeHeight}px`,
     };
 
     return (
       <div className="diagram-two-threads" style={parentStyles}>
         <div className="diagram-two-threads-topLabel">{tree.topLabel}</div>
         <div className="diagram-two-threads-tree" style={treeStyles}>
-          <div className="diagram-two-threads-leftLine" style={leftLineStyles} />
-          <div className="diagram-two-threads-rightLine" style={rightLineStyles} />
+          <div
+            className="diagram-two-threads-leftLine"
+            style={leftLineStyles}
+          />
+          <div
+            className="diagram-two-threads-rightLine"
+            style={rightLineStyles}
+          />
           <div className="diagram-two-threads-nodeList">
             {treeNodes}
           </div>
         </div>
-        <div className="diagram-two-threads-bottomLabel">{tree.bottomLabel}</div>
+        <div className="diagram-two-threads-bottomLabel">
+          {tree.bottomLabel}
+        </div>
       </div>
     );
   }
-});
+}

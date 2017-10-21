@@ -2,34 +2,35 @@ import classnames from 'classnames';
 import React from 'react';
 import { getViewportSize } from '../../common/window';
 
-export default React.createClass({
-  propTypes: {
-    data: React.PropTypes.object,
-  },
+export default class DiagramColumnList extends React.Component {
+  constructor() {
+    super();
 
-  getInitialState() {
-    window.addEventListener('resize', this._handleResize);
-    return {
+    this.state = {
       characterSize: this._getCharacterSize(),
     };
-  },
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this._handleResize);
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleResize);
-  },
+  }
 
-  _getCharacterSize() {
+  _getCharacterSize = () => {
     return getViewportSize().width < 680 ? 7 : 9;
-  },
+  };
 
-  _handleResize() {
+  _handleResize = () => {
     const characterSize = this._getCharacterSize();
     if (characterSize === this.state.characterSize) {
       return;
     }
 
     this.setState({ characterSize });
-  },
+  };
 
   render() {
     const { data } = this.props;
@@ -96,5 +97,5 @@ export default React.createClass({
         {listElements}
       </ul>
     );
-  },
-});
+  }
+}

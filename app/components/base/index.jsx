@@ -1,37 +1,32 @@
 import React from 'react';
 import Navigation from '../navigation/index.jsx';
+import { compose } from 'redux';
 import { navigationItems } from '../../common/routing';
 import { getViewportSize } from '../../common/window';
 import { bindState } from '../../common/dispatch';
+import { withRouter } from 'react-router';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     pageNavigationActive: state.rootReducer.pageNavigationActive,
     pageX: state.rootReducer.pageX,
     pageY: state.rootReducer.pageY,
     pageOpacity: state.rootReducer.pageOpacity,
-    pathname: state.route.location.pathname,
-    selectedIndex: state.rootReducer.userNavHoverIndex
+    selectedIndex: state.rootReducer.userNavHoverIndex,
   };
-}
+};
 
-const base = React.createClass({
-  propTypes: {
-    actions: React.PropTypes.object,
-    children: React.PropTypes.element,
-    pageNavigationActive: React.PropTypes.bool,
-    pageX: React.PropTypes.number,
-    pageY: React.PropTypes.number,
-    pageOpacity: React.PropTypes.number
-  },
-
+class Base extends React.Component {
   componentWillMount() {
     window.onload = () => {
-      const { domContentLoadedEventEnd, navigationStart } = window.performance.timing;
+      const {
+        domContentLoadedEventEnd,
+        navigationStart,
+      } = window.performance.timing;
       const loadTime = (domContentLoadedEventEnd - navigationStart) / 1000;
 
       return this.props.actions.saveLoadTime(loadTime);
-    }
+    };
 
     window.addEventListener('resize', this._handleResize);
     window.addEventListener('scroll', this._handleScroll);
@@ -41,23 +36,23 @@ const base = React.createClass({
     this._endTimeout = null;
 
     this.props.actions.updatePagePosition({ y: this._getTranslateY() });
-  },
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleResize);
     window.removeEventListener('scroll', this._handleScroll);
     window.removeEventListener('page-enter', this._handlePageEnter);
-  },
+  }
 
-  _getTranslateY() {
+  _getTranslateY = () => {
     let modifier = 0.12;
     if (getViewportSize().width <= 680) {
       modifier = 0.07;
     }
     return getViewportSize().height * modifier;
-  },
+  };
 
-  _handlePageEnter(e) {
+  _handlePageEnter = e => {
     if (this._startTimeout) {
       window.clearTimeout(this._startTimeout);
     }
@@ -73,55 +68,65 @@ const base = React.createClass({
     this.props.actions.updatePagePosition({
       animating: true,
       alpha: 0,
-      y: y + offset
+      y: y + offset,
     });
 
     this._startTimeout = window.setTimeout(() => {
       this.props.actions.updatePagePosition({
         alpha: 0,
-        y: y - offset
+        y: y - offset,
       });
     }, 300);
 
     this._endTimeout = window.setTimeout(() => {
-      callback();
+      if (callback) {
+        callback();
+      }
+
       this.props.actions.updatePagePosition({
         animating: false,
         alpha: 1,
-        y
+        y,
       });
 
       this._startTimeout = null;
       this._endTimeout = null;
     }, 600);
-  },
+  };
 
-  _handleScroll() {
+  _handleScroll = () => {
     if (this.props.selectedIndex) {
       this.props.actions.updateNavHover(null);
     }
-  },
+  };
 
-  _handleResize() {
+  _handleResize = () => {
     if (this.props.selectedIndex) {
       this.props.actions.updateNavHover(null);
     }
 
     this.props.actions.updatePagePosition({ y: this._getTranslateY() });
-  },
+  };
 
   render() {
-    const { children, pageNavigationActive, pageX, pageY, pageOpacity, pathname } = this.props;
+    const {
+      children,
+      pageNavigationActive,
+      pageX,
+      pageY,
+      pageOpacity,
+    } = this.props;
     const baseStyles = {
       opacity: pageOpacity,
-      transform: `translate3d(${pageX}px, ${pageY}px, 0)`
+      transform: `translate3d(${pageX}px, ${pageY}px, 0)`,
     };
 
     return (
       <div className="base">
         <Navigation
           active={pageNavigationActive}
-          currentPath={pathname}
+          currentPath={this.props.location.pathname}
+          history={this.props.history}
           links={navigationItems}
           showNavigation={this._handleShowNavigation}
         />
@@ -130,6 +135,6 @@ const base = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default bindState(mapStateToProps)(base);
+export default compose(withRouter, bindState(mapStateToProps))(Base);

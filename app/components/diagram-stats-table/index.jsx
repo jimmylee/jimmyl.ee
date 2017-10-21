@@ -1,12 +1,8 @@
 import React from 'react';
 
-export default React.createClass({
-  propTypes: {
-    data: React.PropTypes.array
-  },
-
+export default class DiagramStatsTable extends React.Component {
   render() {
-    const elements = this.props.data.map((s) => {
+    const elements = this.props.data.map(s => {
       return (
         <div className="diagram-stats-table-item" key={s.name}>
           <div className="diagram-stats-table-name">
@@ -16,9 +12,9 @@ export default React.createClass({
             {s.data}
           </div>
         </div>
-      )
+      );
     });
 
     return <section className="diagram-stats-table">{elements}</section>;
   }
-});
+}
