@@ -17,7 +17,6 @@
     "curly": [2, "multi-line"],
     "eqeqeq": [2, "allow-null"],
     "guard-for-in": 2,
-    "quotes": [1, "single"],
     "eol-last": 0,
     "no-debugger": 1,
     "no-mixed-requires": 0,

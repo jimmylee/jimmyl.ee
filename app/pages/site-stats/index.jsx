@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withOnEnterAnimation } from '../../common/hoc';
 import Content from '../../components/content/index.jsx';
 import Header from '../../components/header/index.jsx';
 import List from '../../components/diagram-column-list/index.jsx';
@@ -32,7 +31,7 @@ const PageStats = props => {
   ];
 
   return (
-    <Content>
+    <Content {...props}>
       <Header>
         <h1>{props.description}</h1>
       </Header>
@@ -75,6 +74,4 @@ const PageStats = props => {
   );
 };
 
-export default compose(withOnEnterAnimation(), connect(mapStateToProps))(
-  PageStats
-);
+export default compose(connect(mapStateToProps))(PageStats);

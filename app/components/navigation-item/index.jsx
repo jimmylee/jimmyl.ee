@@ -30,7 +30,23 @@ class NavigationItem extends React.Component {
   };
 
   _handleClick = () => {
-    this.props.history.push(this.props.url);
+    if (this.props.animating) {
+      return;
+    }
+
+    if (this.props.currentPath === this.props.url) {
+      return;
+    }
+
+    const event = new CustomEvent('page-leave', {
+      detail: {
+        callback: () => {
+          this.props.history.push(this.props.url);
+        },
+      },
+    });
+
+    window.dispatchEvent(event);
   };
 
   _handleMouseMove = () => {

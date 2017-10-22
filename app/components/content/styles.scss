@@ -1,3 +1,5 @@
 .content {
+  transition: 280ms $defaultCurve all;
+  transition-property: transform, opacity;
   padding: 8px 0 156px 0;
 }

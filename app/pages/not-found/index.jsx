@@ -2,9 +2,9 @@ import React from 'react';
 import Content from '../../components/content/index.jsx';
 import Header from '../../components/header/index.jsx';
 
-export default () => {
+export default props => {
   return (
-    <Content>
+    <Content {...props}>
       <Header>
         <h1>Not Found</h1>
       </Header>

@@ -1,6 +1,4 @@
 import React from 'react';
-import { compose } from 'redux';
-import { withOnEnterAnimation } from '../../common/hoc.js';
 import Content from '../../components/content/index';
 import Header from '../../components/header/index';
 import Footer from '../../components/footer/index';
@@ -9,9 +7,9 @@ import { diagramOne, diagramTwo, diagramThree, diagramFour } from './diagrams';
 
 const currentYear = new Date().getFullYear();
 
-const Home = props => {
+export default props => {
   return (
-    <Content>
+    <Content {...props}>
       <Header>
         <h1>{props.description}</h1>
       </Header>
@@ -37,6 +35,4 @@ const Home = props => {
     </Content>
   );
 };
-
-export default compose(withOnEnterAnimation())(Home);
 

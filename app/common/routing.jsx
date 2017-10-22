@@ -77,10 +77,6 @@ export const createRoutes = () => {
       return <Route exact key={index} path="/" component={component} />;
     }
 
-    if (url === '*') {
-      return;
-    }
-
     return <Route key={index} path={url} component={component} />;
   });
 

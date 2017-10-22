@@ -1,6 +1,4 @@
 import React from 'react';
-import { compose } from 'redux';
-import { withOnEnterAnimation } from '../../common/hoc.js';
 import Footer from '../../components/footer/index';
 import Code from '../../components/code/index';
 import Content from '../../components/content/index';
@@ -22,9 +20,9 @@ import {
   supportTableFive,
 } from './diagrams';
 
-const CSSAnimations = props => {
+export default props => {
   return (
-    <Content>
+    <Content {...props}>
       <Header>
         <h1>{props.description}</h1>
       </Header>
@@ -400,5 +398,3 @@ el.addEventListener('animationEnd', cleanup);`}
     </Content>
   );
 };
-
-export default compose(withOnEnterAnimation())(CSSAnimations);

@@ -1,6 +1,4 @@
 import React from 'react';
-import { compose } from 'redux';
-import { withOnEnterAnimation } from '../../common/hoc.js';
 import Content from '../../components/content/index';
 import Header from '../../components/header/index';
 import Code from '../../components/code/index';
@@ -8,9 +6,9 @@ import Footer from '../../components/footer/index';
 import List from '../../components/diagram-column-list/index';
 import { diagramSources } from './diagrams';
 
-const WritingCSS = props => {
+export default props => {
   return (
-    <Content>
+    <Content {...props}>
       <Header>
         <h1>{props.description}</h1>
       </Header>
@@ -277,5 +275,3 @@ margin: 0;
     </Content>
   );
 };
-
-export default compose(withOnEnterAnimation())(WritingCSS);
