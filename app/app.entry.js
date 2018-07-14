@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+window.location.replace('https://reading.supply/@jim');
+
 if (process.env.NODE_ENV !== 'production') {
   window.React = React;
 }
